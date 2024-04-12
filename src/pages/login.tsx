@@ -48,6 +48,7 @@ export const Login: React.FC = () => {
 
   return (
     <Container
+      maxWidth={false}
       style={{
         height: "100vh",
         display: "flex",
