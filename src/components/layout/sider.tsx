@@ -136,6 +136,13 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                   sx={{
                     pl: isNested ? 4 : 2,
                     justifyContent: "center",
+                    color: isSelected ? "#fefefe" : "text.primary",
+                    "&.Mui-selected": {
+                      "&:hover": {
+                        backgroundColor: isSelected ? '#1e36e8' : 'transparent'
+                      },
+                      backgroundColor: isSelected ? '#475be8' : 'transparent'
+                    }
                   }}
                 >
                   <ListItemIcon
@@ -153,7 +160,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                     primary={label}
                     primaryTypographyProps={{
                       noWrap: true,
-                      fontSize: "14px",
+                      fontSize: "16px",
                     }}
                   />
                   {isOpen ? (
@@ -215,7 +222,13 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                 pl: isNested ? 4 : 2,
                 py: isNested ? 1.25 : 1,
                 justifyContent: "center",
-                color: isSelected ? "primary.main" : "text.primary",
+                color: isSelected ? "#fefefe" : "text.primary",
+                "&.Mui-selected": {
+                  "&:hover": {
+                    backgroundColor: isSelected ? '#1e36e8' : 'transparent'
+                  },
+                  backgroundColor: isSelected ? '#475be8' : 'transparent'
+                }
               }}
             >
               <ListItemIcon
@@ -233,7 +246,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                 primary={label}
                 primaryTypographyProps={{
                   noWrap: true,
-                  fontSize: "14px",
+                  fontSize: "16px",
                 }}
               />
             </ListItemButton>
@@ -281,7 +294,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
             primary={translate("dashboard.title", "Dashboard")}
             primaryTypographyProps={{
               noWrap: true,
-              fontSize: "14px",
+              fontSize: "16px",
             }}
           />
         </ListItemButton>
@@ -336,7 +349,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
           primary={t("buttons.logout", "Logout")}
           primaryTypographyProps={{
             noWrap: true,
-            fontSize: "14px",
+            fontSize: "16px",
           }}
         />
       </ListItemButton>
