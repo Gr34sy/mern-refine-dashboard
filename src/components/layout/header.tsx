@@ -12,6 +12,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 
+import { ColorModeContext } from "../../contexts/color-mode";
+import { Box } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { LightModeOutlined, DarkModeOutlined } from "@mui/icons-material";
+import { useContext } from "react";
+
 export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   isSticky,
   sticky,
@@ -22,6 +28,8 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   });
 
   const prefferedSticky = pickNotDeprecated(sticky, isSticky) ?? true;
+
+  const { mode, setMode } = useContext(ColorModeContext);
 
   return (
     <AppBar position={prefferedSticky ? "sticky" : "relative"}>
@@ -41,7 +49,23 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           >
             {user?.name && (
               <Typography variant="subtitle2" data-testid="header-user-name">
-                {user?.name}
+
+                <Box display="flex" gap={1} alignItems="center">
+                  <IconButton sx={{color: '#fefefe'}}
+                    onClick={() => {
+                      setMode();
+                    }}
+                  >
+                    {mode === "dark" ? (
+                      <LightModeOutlined />
+                    ) : (
+                      <DarkModeOutlined />
+                    )}
+                  </IconButton>
+
+                  {user?.name}
+                </Box>
+
               </Typography>
             )}
             {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
