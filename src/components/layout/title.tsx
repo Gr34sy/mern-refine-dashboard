@@ -3,14 +3,16 @@ import { useRouterContext, useLink, useRouterType } from "@refinedev/core";
 import MuiLink from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import type { RefineLayoutThemedTitleProps } from "@refinedev/mui";
+
 import logo from "../../assets/logo.svg";
 import yariga from "../../assets/yariga.svg";
+import logoDark from "../../assets/logoDark.svg";
+import yarigaDark from "../../assets/yarigaDark.svg";
+
 import { ColorModeContext } from "../../contexts/color-mode";
 import { useContext } from "react";
-import { Box } from "@mui/material";
 
 const defaultText = "";
-
 
 export const ThemedTitleV2: React.FC<RefineLayoutThemedTitleProps> = ({
   collapsed,
@@ -37,17 +39,10 @@ export const ThemedTitleV2: React.FC<RefineLayoutThemedTitleProps> = ({
         ...wrapperStyles,
       }}
     >
-      <Box sx={{
-        bgcolor: "primary.light",
-        display: "flex",
-        alignItems: "center",
-        padding: "5px",
-        borderRadius: "4000px",
-      }}>
+      
       {
-        collapsed ? (<img src={logo} alt="Dashn" width="28px"/>) : (<img src={yariga} alt="Refine"/>)
+        collapsed ? (<img src={mode==="light" ? logo : logoDark} alt="Dashn" width="28px"/>) : (<img src={mode==="light" ? yariga : yarigaDark} alt="Refine"/>)
       }
-      </Box>
       
       {!collapsed && (
         <Typography
