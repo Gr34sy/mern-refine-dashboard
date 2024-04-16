@@ -32,7 +32,9 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { mode, setMode } = useContext(ColorModeContext);
 
   return (
-    <AppBar position={prefferedSticky ? "sticky" : "relative"}>
+    <AppBar position={prefferedSticky ? "sticky" : "relative"} sx={{
+      background: "#fcfcfc",
+    }}>
       <Toolbar>
         <HamburgerMenu />
         <Stack
@@ -48,10 +50,10 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             justifyContent="center"
           >
             {user?.name && (
-              <Typography variant="subtitle2" data-testid="header-user-name">
+              <Typography variant="subtitle2" data-testid="header-user-name" sx={{color: "#D2B2A"}}>
 
-                <Box display="flex" gap={1} alignItems="center">
-                  <IconButton sx={{color: '#fefefe'}}
+                <Box display="flex" gap={1} alignItems="center" sx={{color: "#D2B2A"}}>
+                  <IconButton sx={{color: '#D2B2A'}}
                     onClick={() => {
                       setMode();
                     }}
