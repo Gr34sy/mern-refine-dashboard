@@ -155,7 +155,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                       minWidth: "24px",
                       transition: "margin-right 0.3s",
                       marginRight: siderCollapsed ? "0px" : "12px",
-                      color: isSelected ? "primary.light" : "primary.dark",
+                      color: isSelected ? "#fff" : "primary.contrastText",
                     }}
                   >
                     {icon ?? <ListOutlined />}
@@ -166,7 +166,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                       noWrap: true,
                       fontSize: "16px",
                       fontWeight: isSelected ? "bold" : "normal",
-                      color: isSelected ? "primary.light" : "primary.dark",
+                      color: isSelected ? "#fff" : "primary.contrastText",
                       marginLeft: "10px",
                     }}
                   />
@@ -248,7 +248,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                   transition: "margin-right 0.3s",
                   marginRight: siderCollapsed ? "0px" : "12px",
                   minWidth: "24px",
-                  color: isSelected ? "primary.light" : "primary.dark",
+                  color: isSelected ? "#fff" : "primary.contrastText",
                 }}
               >
                 {icon ?? <ListOutlined />}
@@ -259,7 +259,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                   noWrap: true,
                   fontSize: "16px",
                   fontWeight: isSelected ? "bold" : "normal",
-                  color: isSelected ? "primary.light" : "primary.dark",
+                  color: isSelected ? "#fff" : "primary.contrastText",
                   marginLeft: "10px",
                 }}
               />
@@ -358,7 +358,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
             minWidth: "24px",
             transition: "margin-right 0.3s",
             marginRight: siderCollapsed ? "0px" : "12px",
-            color: "primary.dark",
+            color: "primary.contrastText",
           }}
         >
           <Logout />
@@ -400,7 +400,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
       sx={{
         flexGrow: 1,
         paddingTop: "16px",
-        color: "primary.dark",
+        color: "primary.contrastText",
       }}
     >
       {renderSider()}

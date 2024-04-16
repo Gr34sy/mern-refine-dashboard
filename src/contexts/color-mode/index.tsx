@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import { dark } from "../../themes/blueDark";
 
 type ColorModeContextType = {
   mode: string;
@@ -49,7 +50,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
     >
       <ThemeProvider
         // you can change the theme colors here. example: mode === "light" ? RefineThemes.Magenta : RefineThemes.MagentaDark
-        theme={mode === "light" ? blue : RefineThemes.BlueDark}
+        theme={mode === "light" ? blue : dark}
       >
         {children}
       </ThemeProvider>

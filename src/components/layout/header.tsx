@@ -32,8 +32,15 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { mode, setMode } = useContext(ColorModeContext);
 
   return (
-    <AppBar position={prefferedSticky ? "sticky" : "relative"}>
-      <Toolbar>
+    <AppBar
+      position={prefferedSticky ? "sticky" : "relative"}
+      elevation={mode === "light" ? 1 : 0}
+      sx={{
+        background: "primary.main",
+        bgcolor: "primary.main",
+      }}
+    >
+      <Toolbar >
         <HamburgerMenu />
         <Stack
           direction="row"
@@ -49,7 +56,6 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           >
             {user?.name && (
               <Typography variant="subtitle2" data-testid="header-user-name">
-
                 <Box display="flex" gap={1} alignItems="center">
                   <IconButton
                     onClick={() => {
@@ -65,7 +71,6 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
 
                   {user?.name}
                 </Box>
-
               </Typography>
             )}
             {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
