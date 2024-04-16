@@ -139,9 +139,9 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                     color: isSelected ? "#fefefe" : "text.primary",
                     "&.Mui-selected": {
                       "&:hover": {
-                        backgroundColor: isSelected ? "#1e36e8" : "transparent",
+                        backgroundColor: isSelected ? "secondary.dark" : "transparent",
                       },
-                      backgroundColor: isSelected ? "#475be8" : "transparent",
+                      backgroundColor: isSelected ? "secondary.main" : "transparent",
                     },
                     margin: "10px auto",
                     borderRadius: "12px",
@@ -155,7 +155,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                       minWidth: "24px",
                       transition: "margin-right 0.3s",
                       marginRight: siderCollapsed ? "0px" : "12px",
-                      color: isSelected ? "#fff" : "#808191",
+                      color: isSelected ? "primary.light" : "primary.dark",
                     }}
                   >
                     {icon ?? <ListOutlined />}
@@ -166,7 +166,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                       noWrap: true,
                       fontSize: "16px",
                       fontWeight: isSelected ? "bold" : "normal",
-                      color: isSelected ? "#fff" : "#808191",
+                      color: isSelected ? "primary.light" : "primary.dark",
                       marginLeft: "10px",
                     }}
                   />
@@ -232,9 +232,9 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                 color: isSelected ? "#fefefe" : "text.primary",
                 "&.Mui-selected": {
                   "&:hover": {
-                    backgroundColor: isSelected ? "#1e36e8" : "transparent",
+                    backgroundColor: isSelected ? "secondary.dark" : "transparent",
                   },
-                  backgroundColor: isSelected ? "#475be8" : "transparent",
+                  backgroundColor: isSelected ? "secondary.main" : "transparent",
                 },
                 margin: "10px auto",
                 borderRadius: "12px",
@@ -248,7 +248,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                   transition: "margin-right 0.3s",
                   marginRight: siderCollapsed ? "0px" : "12px",
                   minWidth: "24px",
-                  color: isSelected ? "#fff" : "#808191",
+                  color: isSelected ? "primary.light" : "primary.dark",
                 }}
               >
                 {icon ?? <ListOutlined />}
@@ -259,7 +259,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
                   noWrap: true,
                   fontSize: "16px",
                   fontWeight: isSelected ? "bold" : "normal",
-                  color: isSelected ? "#fff" : "#808191",
+                  color: isSelected ? "primary.light" : "primary.dark",
                   marginLeft: "10px",
                 }}
               />
@@ -358,7 +358,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
             minWidth: "24px",
             transition: "margin-right 0.3s",
             marginRight: siderCollapsed ? "0px" : "12px",
-            color: "#808191",
+            color: "primary.dark",
           }}
         >
           <Logout />
@@ -400,7 +400,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
       sx={{
         flexGrow: 1,
         paddingTop: "16px",
-        color: "#808191",
+        color: "primary.dark",
       }}
     >
       {renderSider()}
@@ -468,7 +468,7 @@ export const ThemedSiderV2: React.FC<RefineThemedLayoutV2SiderProps> = ({
             display: { xs: "none", md: "block" },
             "& .MuiDrawer-paper": {
               width: drawerWidth(),
-              bgcolor: "#fcfcfc",
+              bgcolor: "primary.main",
               overflow: "hidden",
               transition: "width 200ms cubic-bezier(0.4, 0, 0.6, 1) 0ms",
             },
