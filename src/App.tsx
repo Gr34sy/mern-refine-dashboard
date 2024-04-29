@@ -40,7 +40,7 @@ import { parseJwt } from "./utils/parse-jwt";
 
 import { ThemedHeaderV2, ThemedSiderV2, ThemedTitleV2 } from "./components";
 import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutlineRounded, VillaOutlined, Dashboard  } from "@mui/icons-material";
-import { Home, AgentProfile, Agents, AllProperties, CreateProperty, EditProperty, PropertyDetails, MyProfile } from "./pages";
+import { Home, AgentProfile, Agents, AllProperties, CreateProperty, EditProperty, PropertyDetails, MyProfile, Review } from "./pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -145,28 +145,28 @@ function App() {
                 {
                   name: "dashboard",
                   options: {label: "Dashboard"},
-                  list: "/home",
+                  list: "/dashboard",
                   icon: <Dashboard/>, 
                 },
                 {
                   name: "property",
-                  list: "/blog-posts",
+                  list: "/property",
                   icon: <VillaOutlined/>,
                 },
                 {
                   name: "agent",
-                  list: "/blog-posts",
+                  list: "/agent",
                   icon: <PeopleAltOutlined/>,
                 },
                 {
                   name: "review",
-                  list: "/blog-posts",
+                  list: "/review",
                   icon: <StarOutlineRounded />,
                 },
                 {
                   name: "my-profile",
                   options: {label: "My Profile"},
-                  list: "/blog-posts",
+                  list: "/my-profile",
                   icon: <AccountCircleOutlined/>,
                 },
               ]}
@@ -196,11 +196,29 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="/home" />}
+                    element={<NavigateToResource resource="/" />}
                   />
-                   <Route path="/home">
+
+                  <Route path="/dashboard">
                     <Route index element={<Home />} />
                   </Route>
+
+                  <Route path="/property">
+                    <Route index element={<AllProperties />} />
+                  </Route>
+
+                  <Route path="/agent">
+                    <Route index element={<Agents/>} />
+                  </Route>
+
+                  <Route path="/review">
+                    <Route index element={<Review />} />
+                  </Route>
+
+                  <Route path="/my-profile">
+                    <Route index element={<MyProfile />} />
+                  </Route>
+
                   <Route path="/blog-posts">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />

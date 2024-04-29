@@ -1,11 +1,11 @@
 import React from 'react'
 
-const agent = () => {
+const review = () => {
   return (
     <div>
-      Agents
+      Review
     </div>
   )
 }
 
-export default agent
+export default review
