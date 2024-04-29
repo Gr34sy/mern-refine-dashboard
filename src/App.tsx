@@ -39,6 +39,8 @@ import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
 
 import { ThemedHeaderV2, ThemedSiderV2, ThemedTitleV2 } from "./components";
+import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutlineRounded, VillaOutlined, Dashboard  } from "@mui/icons-material";
+import { Home, AgentProfile, Agents, AllProperties, CreateProperty, EditProperty, PropertyDetails, MyProfile } from "./pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -141,24 +143,31 @@ function App() {
               authProvider={authProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
+                  name: "dashboard",
+                  options: {label: "Dashboard"},
+                  list: "/home",
+                  icon: <Dashboard/>, 
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
+                  name: "property",
+                  list: "/blog-posts",
+                  icon: <VillaOutlined/>,
+                },
+                {
+                  name: "agent",
+                  list: "/blog-posts",
+                  icon: <PeopleAltOutlined/>,
+                },
+                {
+                  name: "review",
+                  list: "/blog-posts",
+                  icon: <StarOutlineRounded />,
+                },
+                {
+                  name: "my-profile",
+                  options: {label: "My Profile"},
+                  list: "/blog-posts",
+                  icon: <AccountCircleOutlined/>,
                 },
               ]}
               options={{
@@ -187,8 +196,11 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="blog_posts" />}
+                    element={<NavigateToResource resource="/home" />}
                   />
+                   <Route path="/home">
+                    <Route index element={<Home />} />
+                  </Route>
                   <Route path="/blog-posts">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />
