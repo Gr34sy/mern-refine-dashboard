@@ -1,11 +1,27 @@
-import { useList } from '@refinedev/core';
+import { useList } from "@refinedev/core";
+
+import { Box, Typography, Stack } from "@mui/material";
+
+import {
+  PieChart,
+  PropertyReferrals,
+  TotalRevenue,
+  PropertyCard,
+  TopAgent,
+} from "../components";
 
 const home = () => {
   return (
-    <div>
-      home
-    </div>
-  )
-}
+    <Box>
+      <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
+        Bronek
+      </Typography>
 
-export default home
+      <Box>
+          <PieChart />
+        </Box>
+    </Box>
+  );
+};
+
+export default home;

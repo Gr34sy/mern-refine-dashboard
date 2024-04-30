@@ -9,12 +9,13 @@ export const dark = createTheme({
       main: "#262424",
       light: "#515151",
       dark: "#121212",
-      contrastText: "#9293A9",
+      contrastText: "#ededed",
     },
     secondary: {
       main: "#217099",
       light: "#9716B2",
       dark: "#0C4B6C",
+      contrastText: "#efefef",
     },
   },
 });

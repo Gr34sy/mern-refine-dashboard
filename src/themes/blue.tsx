@@ -9,12 +9,13 @@ export const blue = createTheme({
         main: "#fcfcfc",
         light: "#fff",
         dark: "#000",
-        contrastText: "#808191",
+        contrastText: "#11142D",
     },
     secondary:{
         main: "#475be8",
         light: "#4791db",
         dark: "#1e36e8",
+        contrastText: "#808191",
     },
   },
 });

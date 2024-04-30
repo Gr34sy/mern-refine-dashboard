@@ -61,6 +61,7 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                     onClick={() => {
                       setMode();
                     }}
+                    sx={{color: 'secondary.contrastText'}}
                   >
                     {mode === "dark" ? (
                       <LightModeOutlined />
@@ -69,7 +70,9 @@ export const ThemedHeaderV2: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                     )}
                   </IconButton>
 
-                  {user?.name}
+                  <Typography color="secondary.contrastText">
+                    {user?.name}
+                  </Typography>
                 </Box>
               </Typography>
             )}
