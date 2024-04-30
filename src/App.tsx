@@ -39,7 +39,7 @@ import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
 
 import { ThemedHeaderV2, ThemedSiderV2, ThemedTitleV2 } from "./components";
-import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutlineRounded, VillaOutlined, Dashboard  } from "@mui/icons-material";
+import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutlineRounded, VillaOutlined, SpaceDashboard  } from "@mui/icons-material";
 import { Home, AgentProfile, Agents, AllProperties, CreateProperty, EditProperty, PropertyDetails, MyProfile, Review } from "./pages";
 
 const axiosInstance = axios.create();
@@ -146,7 +146,7 @@ function App() {
                   name: "dashboard",
                   options: {label: "Dashboard"},
                   list: "/dashboard",
-                  icon: <Dashboard/>, 
+                  icon: <SpaceDashboard/>, 
                 },
                 {
                   name: "property",
