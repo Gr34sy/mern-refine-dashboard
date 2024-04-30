@@ -26,6 +26,7 @@ export const HamburgerMenu: React.FC = () => {
           mr: 2,
           display: { xs: "none", md: "flex" },
           ...(!siderCollapsed && { display: "none" }),
+          color: 'secondary.contrastText',
         }}
       />
       <HamburgerIcon
@@ -34,6 +35,7 @@ export const HamburgerMenu: React.FC = () => {
           mr: 2,
           display: { xs: "flex", md: "none" },
           ...(mobileSiderOpen && { display: "none" }),
+          color: 'secondary.contrastText',
         }}
       />
     </>

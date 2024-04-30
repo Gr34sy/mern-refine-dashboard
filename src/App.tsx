@@ -5,9 +5,10 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {
   ErrorComponent,
   notificationProvider,
-  RefineSnackbarProvider,
-  ThemedLayoutV2,
+  RefineSnackbarProvider
 } from "@refinedev/mui";
+
+import { ThemedLayoutV2 } from "./components";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";

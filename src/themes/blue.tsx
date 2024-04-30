@@ -8,7 +8,7 @@ export const blue = createTheme({
     primary:{
         main: "#fcfcfc",
         light: "#fff",
-        dark: "#000",
+        dark: "#EDEDED",
         contrastText: "#11142D",
     },
     secondary:{

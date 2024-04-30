@@ -54,7 +54,7 @@ export const Login: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#FCFCFC",
+        backgroundColor: "primary.dark",
       }}
     >
       <Box
