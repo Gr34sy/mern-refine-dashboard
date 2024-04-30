@@ -151,7 +151,10 @@ function App() {
                 },
                 {
                   name: "property",
-                  list: "/property",
+                  list: AllProperties,
+                  show: PropertyDetails,
+                  create: CreateProperty,
+                  edit: EditProperty,
                   icon: <VillaOutlined/>,
                 },
                 {

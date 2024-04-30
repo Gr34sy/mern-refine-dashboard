@@ -17,6 +17,7 @@ export const TotalRevenueOptions: ApexOptions = {
     toolbar: {
       show: false,
     },
+    foreColor: "#808191",
   },
   colors: ['#475BE8', '#A14CC2'],
   plotOptions: {
@@ -52,6 +53,7 @@ export const TotalRevenueOptions: ApexOptions = {
     horizontalAlign: 'right',
   },
   tooltip: {
+    theme: 'dark',
     y: {
       formatter(val: number) {
         return `$ ${val} thousands`;

@@ -36,10 +36,20 @@ const PieChart = ({ title, value, series, colors }: PieChartProps) => {
 
       <ReactApexChart
         options={{
-          chart: { type: "donut" },
+          chart: { type: "donut" , background: 'primary.main'},
           colors,
           legend: { show: false },
           dataLabels: { enabled: false },
+          plotOptions: {
+            pie: {
+              donut: {
+                size: '50%',
+              }
+            }
+          },
+          stroke:{
+            colors:['transparent']
+          },
         }}
         type="donut"
         series={series}

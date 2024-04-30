@@ -28,6 +28,7 @@ export const ThemedLayoutV2: React.FC<RefineThemedLayoutV2Props> = ({
               flexDirection: "column",
               flex: 1,
               minHeight: "100vh",
+              color: "primary.contrastText",
             },
             { overflow: "auto" },
             { overflow: "clip" },
