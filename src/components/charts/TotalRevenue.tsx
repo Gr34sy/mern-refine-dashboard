@@ -18,15 +18,16 @@ const TotalRevenue = () => {
           $236,354
         </Typography>
 
-        <Stack>
+        <Stack direction="row" alignItems="center" gap={1}>
           <ArrowCircleUpRounded sx={{
             fontSize: 25, color: 'secondary.main'
           }} />
 
-          <Stack direction="row" alignItems="center" gap={1}>
+          <Stack>
             <Typography fontSize={15} color="secondary.main" fontWeight={600}>
               0.8%
             </Typography>
+          
             <Typography fontSize={15} color="secondary.contrastText">
              Than last Month
             </Typography>

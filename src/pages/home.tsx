@@ -23,7 +23,7 @@ const home = () => {
           <PieChart title="Total Customers" value={7292} series={[75, 12]} colors={['#14B8EC','#AFE0DF']}/>
       </Box>
 
-      <Stack mt="25px" width="100%" direction={{xs: 'column', lg: 'row'}}>
+      <Stack mt="25px" width="100%" direction={{xs: 'column', lg: 'row'}} gap={4}>
         <TotalRevenue />
         <PropertyReferrals />
       </Stack>
