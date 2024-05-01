@@ -150,7 +150,7 @@ function App() {
                   icon: <SpaceDashboard/>, 
                 },
                 {
-                  name: "property",
+                  name: "properties",
                   list: AllProperties,
                   show: PropertyDetails,
                   create: CreateProperty,
@@ -158,19 +158,20 @@ function App() {
                   icon: <VillaOutlined/>,
                 },
                 {
-                  name: "agent",
-                  list: "/agent",
+                  name: "agents",
+                  list: Agents,
+                  show: AgentProfile,
                   icon: <PeopleAltOutlined/>,
                 },
                 {
-                  name: "review",
-                  list: "/review",
+                  name: "reviews",
+                  list: "/reviews",
                   icon: <StarOutlineRounded />,
                 },
                 {
                   name: "my-profile",
                   options: {label: "My Profile"},
-                  list: "/my-profile",
+                  list: MyProfile,
                   icon: <AccountCircleOutlined/>,
                 },
               ]}
@@ -207,15 +208,16 @@ function App() {
                     <Route index element={<Home />} />
                   </Route>
 
-                  <Route path="/property">
+                  <Route path="/properties">
                     <Route index element={<AllProperties />} />
+                    <Route path="create" element={<CreateProperty/>}/>
                   </Route>
 
-                  <Route path="/agent">
+                  <Route path="/agents">
                     <Route index element={<Agents/>} />
                   </Route>
 
-                  <Route path="/review">
+                  <Route path="/reviews">
                     <Route index element={<Review />} />
                   </Route>
 
