@@ -13,7 +13,17 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const getAllProperties = async (req, res) => {};
+const getAllProperties = async (req, res) => {
+  try {
+    const properties = await Property.find({}).limit(req.query._end);
+
+    res.status(200).json(properties);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: "API Error" });
+  }
+};
+
 const getPropertyDetail = async (req, res) => {};
 
 const createProperty = async (req, res) => {
@@ -48,8 +58,8 @@ const createProperty = async (req, res) => {
 
     res.status(200).json({ message: "Property created successfully!" });
   } catch (e) {
-   console.error(e.message);
-    res.status(500).json({ message: 'Server error!' });
+    console.error(e.message);
+    res.status(500).json({ message: "API Error" });
   }
 };
 const updateProperty = async (req, res) => {};
