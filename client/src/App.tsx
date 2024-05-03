@@ -230,7 +230,10 @@ function App() {
                     </Authenticated>
                   }
                 >
-                  <Route index element={<NavigateToResource resource="/" />} />
+                  <Route
+                    index
+                    element={<NavigateToResource resource="/dashboard" />}
+                  />
 
                   <Route path="/dashboard">
                     <Route index element={<Home />} />

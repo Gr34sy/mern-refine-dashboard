@@ -10,11 +10,12 @@ import {
 } from "../components";
 
 const home = () => {
+
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
+      {/* <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
         Test
-      </Typography>
+      </Typography> */}
 
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
           <PieChart title="Properties for Sale" value={682} series={[75, 12]} colors={['#EF850F','#F5C085']}/>
