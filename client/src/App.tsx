@@ -5,7 +5,7 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {
   ErrorComponent,
   notificationProvider,
-  RefineSnackbarProvider
+  RefineSnackbarProvider,
 } from "@refinedev/mui";
 
 import { ThemedLayoutV2 } from "./components";
@@ -40,8 +40,25 @@ import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
 
 import { ThemedHeaderV2, ThemedSiderV2, ThemedTitleV2 } from "./components";
-import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutlineRounded, VillaOutlined, SpaceDashboard  } from "@mui/icons-material";
-import { Home, AgentProfile, Agents, AllProperties, CreateProperty, EditProperty, PropertyDetails, MyProfile, Review } from "./pages";
+import {
+  AccountCircleOutlined,
+  ChatBubbleOutline,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  VillaOutlined,
+  SpaceDashboard,
+} from "@mui/icons-material";
+import {
+  Home,
+  AgentProfile,
+  Agents,
+  AllProperties,
+  CreateProperty,
+  EditProperty,
+  PropertyDetails,
+  MyProfile,
+  Review,
+} from "./pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -59,20 +76,34 @@ function App() {
       const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...profileObj,
+        const response = await fetch("http://localhost:8080/api/v1/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: profileObj.name,
+            email: profileObj.email,
             avatar: profileObj.picture,
-          })
-        );
+          }),
+        });
 
-        localStorage.setItem("token", `${credential}`);
+        const data = await response.json();
 
-        return {
-          success: true,
-          redirectTo: "/",
-        };
+        if (response.status === 200) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...profileObj,
+              avatar: profileObj.picture,
+              userid: data._id,
+            })
+          );
+          localStorage.setItem("token", `${credential}`);
+
+          return {
+            success: true,
+            redirectTo: "/",
+          };
+        }
       }
 
       return {
@@ -145,9 +176,9 @@ function App() {
               resources={[
                 {
                   name: "dashboard",
-                  options: {label: "Dashboard"},
+                  options: { label: "Dashboard" },
                   list: "/dashboard",
-                  icon: <SpaceDashboard/>, 
+                  icon: <SpaceDashboard />,
                 },
                 {
                   name: "properties",
@@ -155,13 +186,13 @@ function App() {
                   show: PropertyDetails,
                   create: CreateProperty,
                   edit: EditProperty,
-                  icon: <VillaOutlined/>,
+                  icon: <VillaOutlined />,
                 },
                 {
                   name: "agents",
                   list: Agents,
                   show: AgentProfile,
-                  icon: <PeopleAltOutlined/>,
+                  icon: <PeopleAltOutlined />,
                 },
                 {
                   name: "reviews",
@@ -170,9 +201,9 @@ function App() {
                 },
                 {
                   name: "my-profile",
-                  options: {label: "My Profile"},
+                  options: { label: "My Profile" },
                   list: MyProfile,
-                  icon: <AccountCircleOutlined/>,
+                  icon: <AccountCircleOutlined />,
                 },
               ]}
               options={{
@@ -199,10 +230,7 @@ function App() {
                     </Authenticated>
                   }
                 >
-                  <Route
-                    index
-                    element={<NavigateToResource resource="/" />}
-                  />
+                  <Route index element={<NavigateToResource resource="/" />} />
 
                   <Route path="/dashboard">
                     <Route index element={<Home />} />
@@ -210,11 +238,11 @@ function App() {
 
                   <Route path="/properties">
                     <Route index element={<AllProperties />} />
-                    <Route path="create" element={<CreateProperty/>}/>
+                    <Route path="create" element={<CreateProperty />} />
                   </Route>
 
                   <Route path="/agents">
-                    <Route index element={<Agents/>} />
+                    <Route index element={<Agents />} />
                   </Route>
 
                   <Route path="/reviews">
