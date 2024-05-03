@@ -15,7 +15,7 @@ export const dark = createTheme({
       main: "#217099",
       light: "#9716B2",
       dark: "#0C4B6C",
-      contrastText: "#efefef",
+      contrastText: "#a39b9b",
     },
   },
 });
