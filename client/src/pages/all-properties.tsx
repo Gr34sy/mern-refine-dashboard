@@ -25,10 +25,24 @@ const AllProperties = () => {
     filters,
     setFilters,
     pageCount,
-  } = useTable();
-  console.log(data);
+  } = useTable({
+    sorters: {
+      initial: [
+        {
+          field: "name",
+          order: "asc",
+        },
+      ],
+    },
+  });
+  console.log(sorters);
 
   const allProperties = data?.data ?? [];
+
+  const currentPrice = sorters.find((item) => item.field === "price")?.order;
+  const toggleSort = (field: string) => {
+    setSorters([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);
+  };
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Error</Typography>;
@@ -37,7 +51,7 @@ const AllProperties = () => {
     <Box>
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
-          <Typography
+          <Box
             fontSize={25}
             fontWeight={700}
             color="primary.contrastText"
@@ -60,8 +74,8 @@ const AllProperties = () => {
                 mb={{ xs: "20px", sm: 0 }}
               >
                 <CustomButton
-                  title={`Sort price`}
-                  handleClick={() => {}}
+                  title={`Sort price ${currentPrice === "asc" ? "↑" : "↓"}`}
+                  handleClick={() => toggleSort("price")}
                   backgroundColor="secondary.main"
                   color="#fcfcfc"
                 />
@@ -86,7 +100,7 @@ const AllProperties = () => {
                 </Select>
               </Box>
             </Box>
-          </Typography>
+          </Box>
         </Stack>
       </Box>
 
@@ -147,7 +161,9 @@ const AllProperties = () => {
             onChange={() => {}}
           >
             {[10, 20, 30, 40, 50].map((size) => (
-              <MenuItem key={size} value={size}>Show {size}</MenuItem>
+              <MenuItem key={size} value={size}>
+                Show {size}
+              </MenuItem>
             ))}
           </Select>
         </Box>
