@@ -57,7 +57,8 @@ import {
   EditProperty,
   PropertyDetails,
   MyProfile,
-  Review,
+  Reviews,
+  CreateReview,
 } from "./pages";
 
 const axiosInstance = axios.create();
@@ -95,6 +96,7 @@ function App() {
               ...profileObj,
               avatar: profileObj.picture,
               userid: data._id,
+              admin: false,
             })
           );
           localStorage.setItem("token", `${credential}`);
@@ -197,6 +199,7 @@ function App() {
                 {
                   name: "reviews",
                   list: "/reviews",
+                  create: CreateReview,
                   icon: <StarOutlineRounded />,
                 },
                 {
@@ -250,7 +253,8 @@ function App() {
                   </Route>
 
                   <Route path="/reviews">
-                    <Route index element={<Review />} />
+                    <Route index element={<Reviews />} />
+                    <Route path="create/:id" element={<CreateReview />} />
                   </Route>
 
                   <Route path="/my-profile">

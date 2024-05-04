@@ -3,12 +3,15 @@ import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
 import {
+  AlternateEmail,
   ChatBubble,
   Delete,
   Edit,
+  Email,
   Phone,
   Place,
   Star,
+  Stars,
 } from "@mui/icons-material";
 
 function checkImage(url: any) {
@@ -31,6 +34,27 @@ const propertyDetails = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
+  // @ts-ignore comment
+  const isCurrentUser = user.email === propertyDetails.creator.email;
+
+  const handleDeleteProperty = () => {
+    const response = confirm("Are you sure you want to delete this property?");
+    if (response) {
+      mutate(
+        {
+          resource: "properties",
+          id: id as string,
+        },
+        {
+          onSuccess: () => {
+            navigate("/properties");
+          },
+        }
+      );
+    }
+  };
+
+  console.log(propertyDetails.creator);
   return (
     <Box
       borderRadius="15px"
@@ -155,7 +179,8 @@ const propertyDetails = () => {
             sx={{
               borderWidth: "1px",
               borderStyle: "solid",
-              borderColor: "secondary.contrastText"}}
+              borderColor: "secondary.contrastText",
+            }}
             borderRadius={2}
           >
             <Stack
@@ -180,7 +205,11 @@ const propertyDetails = () => {
               />
 
               <Box mt="15px">
-                <Typography fontSize={18} fontWeight={600} color="primary.contrastText">
+                <Typography
+                  fontSize={18}
+                  fontWeight={600}
+                  color="primary.contrastText"
+                >
                   {propertyDetails.creator.name}
                 </Typography>
                 <Typography
@@ -194,13 +223,22 @@ const propertyDetails = () => {
               </Box>
 
               <Stack mt="15px" direction="row" alignItems="center" gap={1}>
-                <Place sx={{ color: "secondary.contrastText" }} />
-                <Typography fontSize={14} fontWeight={400} color="secondary.contrastText">
-                  North Carolina, USA
+                <AlternateEmail sx={{ color: "secondary.contrastText" }} />
+                <Typography
+                  fontSize={14}
+                  fontWeight={400}
+                  color="secondary.contrastText"
+                >
+                  {propertyDetails.creator.email}
                 </Typography>
               </Stack>
 
-              <Typography mt={1} fontSize={16} fontWeight={600} color="primary.contrastText">
+              <Typography
+                mt={1}
+                fontSize={16}
+                fontWeight={600}
+                color="primary.contrastText"
+              >
                 {propertyDetails.creator.allProperties.length} Properties
               </Typography>
             </Stack>
@@ -213,20 +251,34 @@ const propertyDetails = () => {
               gap={2}
             >
               <CustomButton
-                title={"Edit"}
+                title={!isCurrentUser ? "Message" : "Edit"}
                 backgroundColor="secondary.main"
                 color="#FCFCFC"
                 fullWidth
-                icon={<Edit />}
-                handleClick={() => {}}
+                icon={
+                  !isCurrentUser ? <Email /> : <Edit />
+              }
+                handleClick={() => {
+                  if (isCurrentUser) {
+                    navigate(`/properties/edit/${propertyDetails._id}`);
+                  }else{
+                    window.location.href = `mailto:${propertyDetails.creator.mail}?subject=Subject&body=message%20goes%20here`;
+                  }
+                }}
               />
               <CustomButton
-                title={"Delete"}
-                backgroundColor="#2ED480"
+                title={!isCurrentUser ? "Review" : "Delete"}
+                backgroundColor={!isCurrentUser ? "#2ED480" : "#d42e2e"}
                 color="#FCFCFC"
                 fullWidth
-                icon={<Delete />}
-                handleClick={() => {}}
+                icon={!isCurrentUser ? <Stars /> : <Delete />}
+                handleClick={() => {
+                  if (isCurrentUser) {
+                    handleDeleteProperty()
+                  }else{
+                    navigate(`/reviews/create/${propertyDetails._id}`);
+                  };
+                }}
               />
             </Stack>
           </Stack>
