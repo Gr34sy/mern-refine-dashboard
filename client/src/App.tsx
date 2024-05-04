@@ -3,6 +3,7 @@ import { AuthBindings, Authenticated, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
+  Edit,
   ErrorComponent,
   notificationProvider,
   RefineSnackbarProvider,
@@ -246,6 +247,7 @@ function App() {
                     <Route index element={<AllProperties />} />
                     <Route path="create" element={<CreateProperty />} />
                     <Route path="show/:id" element={<PropertyDetails />} />
+                    <Route path="edit/:id" element={<EditProperty />} />
                   </Route>
 
                   <Route path="/agents">

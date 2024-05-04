@@ -4,11 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
 import {
   AlternateEmail,
-  ChatBubble,
   Delete,
   Edit,
   Email,
-  Phone,
   Place,
   Star,
   Stars,
@@ -23,35 +21,42 @@ function checkImage(url: any) {
 const propertyDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity();
-  const { id } = useParams();
-  const { mutate } = useDelete();
   const { queryResult } = useShow();
+  const { mutate } = useDelete();
+  const { id } = useParams();
 
   const { data, isLoading, isError } = queryResult;
 
   const propertyDetails = data?.data ?? {};
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+  if (isLoading) {
+      return <div>Loading...</div>;
+  }
 
-  // @ts-ignore comment
+  if (isError) {
+      return <div>Something went wrong!</div>;
+  }
+
+  //@ts-ignore 
   const isCurrentUser = user.email === propertyDetails.creator.email;
 
   const handleDeleteProperty = () => {
-    const response = confirm("Are you sure you want to delete this property?");
-    if (response) {
-      mutate(
-        {
-          resource: "properties",
-          id: id as string,
-        },
-        {
-          onSuccess: () => {
-            navigate("/properties");
-          },
-        }
+      const response = confirm(
+          "Are you sure you want to delete this property?",
       );
-    }
+      if (response) {
+          mutate(
+              {
+                  resource: "properties",
+                  id: id as string,
+              },
+              {
+                  onSuccess: () => {
+                      navigate("/properties");
+                  },
+              },
+          );
+      }
   };
 
   console.log(propertyDetails.creator);
