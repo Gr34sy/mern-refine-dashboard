@@ -21,7 +21,7 @@ const PropertyCard = ({
   return (
     <Card
       component={Link}
-      to={`/properties/${id}`}
+      to={`/properties/show/${id}`}
       sx={{
         bgcolor: 'primary.main',
         maxWidth: "300px",
@@ -30,7 +30,6 @@ const PropertyCard = ({
           boxShadow: "0 22px 45px 2px rgba(61, 57, 57, 0.1)",
           cursor: "pointer",
         },
-        textDecoration: 'none',
       }}
       elevation={0}
     >
