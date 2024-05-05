@@ -14,6 +14,9 @@ export interface ProfileProps {
     name: string,
     avatar: string,
     email: string,
+    location: string,
+    phone: string,
+    img: string,
     properties: Array | undefined
 }
 

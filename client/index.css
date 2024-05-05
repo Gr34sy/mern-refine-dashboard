@@ -10,6 +10,7 @@ a {
   width: 340px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  object-fit: cover;
 }
 
 .my_profile_user-img {

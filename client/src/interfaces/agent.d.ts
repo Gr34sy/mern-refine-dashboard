@@ -7,7 +7,7 @@ export interface AgentCardProp {
     avatar: string,
     noOfProperties: number,
     location: string,
-    phone: string
+    phone: string,
 }
 
 export interface InfoBarProps {

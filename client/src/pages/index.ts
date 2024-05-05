@@ -9,6 +9,7 @@ import PropertyDetails from './property-details';
 import EditProperty from './edit-property';
 import Reviews from './reviews';
 import CreateReview from './create-review';
+import EditProfile from './edit-profile';
 
 export {
   AgentProfile,
@@ -22,4 +23,5 @@ export {
   EditProperty,
   Reviews,
   CreateReview,
+  EditProfile,
 };

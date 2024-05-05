@@ -60,6 +60,7 @@ import {
   MyProfile,
   Reviews,
   CreateReview,
+  EditProfile,
 } from "./pages";
 
 const axiosInstance = axios.create();
@@ -207,6 +208,7 @@ function App() {
                   name: "my-profile",
                   options: { label: "My Profile" },
                   list: MyProfile,
+                  edit: EditProfile,
                   icon: <AccountCircleOutlined />,
                 },
               ]}
@@ -261,6 +263,7 @@ function App() {
 
                   <Route path="/my-profile">
                     <Route index element={<MyProfile />} />
+                    <Route path="edit/:id" element={<EditProfile />} />
                   </Route>
 
                   <Route path="/blog-posts">
