@@ -1,7 +1,14 @@
 import User from '../mongodb/models/user.js';
 
 const getAllUsers = async (req, res) => {
+   try {
+      const users = await User.find({}).limit(req.query._end);
 
+      res.status(200).json(users);
+   } catch (e){
+      console.log(e.message);
+      res.status(500).json({message: 'Failed retrieving users'});
+   }
 };
 
 const createUser = async (req, res) => {

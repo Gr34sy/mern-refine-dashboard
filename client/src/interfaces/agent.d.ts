@@ -5,10 +5,12 @@ export interface AgentCardProp {
     name: string,
     email: string,
     avatar: string,
-    noOfProperties: number
+    noOfProperties: number,
+    location: string,
+    phone: string
 }
 
 export interface InfoBarProps {
     icon: ReactNode,
-    name: string
+    name: string,
 }
