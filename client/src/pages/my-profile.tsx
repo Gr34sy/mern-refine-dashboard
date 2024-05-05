@@ -23,7 +23,7 @@ const MyProfile = () => {
   return (
     <Box>
       <Stack direction="row" flexWrap="wrap" gap="15px" alignItems="center" justifyContent="space-between">
-        <Typography fontSize={25} fontWeight={700} color="#11142D">
+        <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
           My Profile
         </Typography>
 

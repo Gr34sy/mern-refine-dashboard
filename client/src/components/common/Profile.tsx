@@ -21,15 +21,13 @@ const Profile = ({
   img,
 }: ProfileProps) => {
 
-  const navigate = useNavigate();
-
   return (
     <Box>
-      {type !== "My" && <Typography fontSize={25} fontWeight={700} color="#11142D">
+      {type !== "My" && <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
           My Profile
       </Typography>}
 
-      <Box mt="10px" borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
+      <Box mt="10px" borderRadius="15px" padding="20px" bgcolor="primary.main">
         <Box
           sx={{
             display: "flex",
@@ -81,10 +79,10 @@ const Profile = ({
                 gap="30px"
               >
                 <Stack direction="column">
-                  <Typography fontSize={22} fontWeight={600} color="#11142D">
+                  <Typography fontSize={22} fontWeight={600} color="primary.contrastText">
                     {name}
                   </Typography>
-                  <Typography fontSize={16} color="#808191">
+                  <Typography fontSize={16} color="secondary.contrastText">
                     Realestate Agent
                   </Typography>
                 </Stack>
@@ -95,7 +93,7 @@ const Profile = ({
                       <Typography
                         fontSize={14}
                         fontWeight={500}
-                        color="#808191"
+                        color="secondary.contrastText"
                       >
                         Address
                       </Typography>
@@ -105,8 +103,8 @@ const Profile = ({
                         alignItems="center"
                         gap="10px"
                       >
-                        <Place sx={{ color: "#11142D" }} />
-                        <Typography fontSize={14} color="#11142D">
+                        <Place sx={{ color: "primary.contrastText" }} />
+                        <Typography fontSize={14} color="primary.contrastText">
                           {location}
                         </Typography>
                       </Box>
@@ -116,7 +114,7 @@ const Profile = ({
                       <Typography
                         fontSize={14}
                         fontWeight={500}
-                        color="#808191"
+                        color="secondary.contrastText"
                       >
                         Email
                       </Typography>
@@ -126,8 +124,8 @@ const Profile = ({
                         alignItems="center"
                         gap="10px"
                       >
-                        <Email sx={{ color: "#11142D" }} />
-                        <Typography fontSize={14} color="#11142D">
+                        <Email sx={{ color: "primary.contrastText" }} />
+                        <Typography fontSize={14} color="primary.contrastText">
                           {email}
                         </Typography>
                       </Box>
@@ -139,7 +137,7 @@ const Profile = ({
                       <Typography
                         fontSize={14}
                         fontWeight={500}
-                        color="#808191"
+                        color="secondary.contrastText"
                       >
                         Phone Number
                       </Typography>
@@ -149,8 +147,8 @@ const Profile = ({
                         alignItems="center"
                         gap="10px"
                       >
-                        <Phone sx={{ color: "#11142D" }} />
-                        <Typography fontSize={14} color="#11142D" noWrap>
+                        <Phone sx={{ color: "primary.contrastText" }} />
+                        <Typography fontSize={14} color="primary.contrastText" noWrap>
                           {phone}
                         </Typography>
                       </Box>
@@ -164,8 +162,8 @@ const Profile = ({
       </Box>
 
       {properties.length > 0 && (
-        <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
-          <Typography fontSize={18} fontWeight={600} color="#11142D">
+        <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="primary.main">
+          <Typography fontSize={18} fontWeight={600}>
             {type} Properties
           </Typography>
 
