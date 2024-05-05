@@ -24,7 +24,7 @@ const Profile = ({
   return (
     <Box>
       {type !== "My" && <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
-          My Profile
+          Agent Profile
       </Typography>}
 
       <Box mt="10px" borderRadius="15px" padding="20px" bgcolor="primary.main">

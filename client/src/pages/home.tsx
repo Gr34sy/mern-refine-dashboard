@@ -10,6 +10,25 @@ import {
 } from "../components";
 
 const home = () => {
+  const { data, isLoading, isError } = useList({
+    resource: 'properties',
+    config: {
+      pagination: {
+        pageSize: 10,
+      },
+    },
+    sorters: [  
+      {  
+        field: "name",
+        order: "asc", 
+      },  
+      ],  
+  });
+
+  const latestProperties = data?.data ?? [];
+
+  if(isLoading) return <Typography>Loading...</Typography>;
+  if(isError) return <Typography>Something went wrong!</Typography>;
 
   return (
     <Box>
@@ -28,6 +47,18 @@ const home = () => {
         <TotalRevenue />
         <PropertyReferrals />
       </Stack>
+
+      <Box flex={1} borderRadius="15px" padding="20px" flexDirection="column" display="flex" minWidth="100%" mt="25px" bgcolor="primary.main">
+          <Typography fontSize="18px" fontWeight={600} color="primary.contrastText">
+            Latest Properties
+          </Typography>
+
+          <Box mt={2.5} sx={{display: 'flex', flexWrap: 'wrap', gap: 4}}>
+              {latestProperties.map((property) => (
+                <PropertyCard key={property._id} id={property._id} title={property.title} location={property.location} price={property.price} photo={property.photo}/>
+              ))}
+          </Box>
+      </Box>
     </Box>
   );
 };

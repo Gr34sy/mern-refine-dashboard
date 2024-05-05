@@ -4,7 +4,6 @@ import { useGetIdentity } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
 const InfoBar = ({icon, name}: InfoBarProps) => (
   <Stack flex={1} minWidth={{xs: '100%', sm: 300}} gap={1.5} direction="row">
     {icon}
@@ -26,7 +25,7 @@ const AgentCard = ({
   const generateLink = () => {
     //@ts-ignore
     if (currentUser.email === email) return "/my-profile";
-    return `/agent/show/${id}`;
+    return `/agents/show/${id}`;
   };
 
   return (

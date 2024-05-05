@@ -254,6 +254,7 @@ function App() {
 
                   <Route path="/agents">
                     <Route index element={<Agents />} />
+                    <Route path="show/:id" element={<AgentProfile/>}/>
                   </Route>
 
                   <Route path="/reviews">
