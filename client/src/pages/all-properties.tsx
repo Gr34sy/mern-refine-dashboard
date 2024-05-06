@@ -29,13 +29,12 @@ const AllProperties = () => {
     sorters: {
       initial: [
         {
-          field: "name",
+          field: "title",
           order: "asc",
         },
       ],
     },
   });
-  console.log(sorters);
 
   const allProperties = data?.data ?? [];
 

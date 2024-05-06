@@ -2,7 +2,9 @@ import User from '../mongodb/models/user.js';
 
 const getAllUsers = async (req, res) => {
    try {
-      const users = await User.find({}).limit(req.query._end);
+      const sort = req.query.sort ? req.query.sort : "allProperties";
+      const order = req.query.order ? req.query.order : "asc";
+      const users = await User.find({}).limit(req.query._end).sort({ [sort]: order});;
 
       res.status(200).json(users);
    } catch (e){

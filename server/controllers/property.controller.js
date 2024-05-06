@@ -32,19 +32,32 @@ const getAllProperties = async (req, res) => {
     query.title = { $regex: title_like, $options: "i" };
   }
 
-  try {
-    const count = await Property.countDocuments({ query });
-    const properties = await Property.find(query)
-      .limit(_end)
-      .skip(_start)
-      .sort({ [_sort]: _order });
-    res.header("x-total-count", count);
-    res.header("Access-Control-Expose-Headers", "x-total-count");
+  if(_sort && _order){
+    try {
+      const count = await Property.countDocuments({ query });
+      const properties = await Property.find(query)
+        .limit(_end)
+        .skip(_start)
+        .sort({ [_sort]: _order });
+      res.header("x-total-count", count);
+      res.header("Access-Control-Expose-Headers", "x-total-count");
+  
+      res.status(200).json(properties);
+    } catch (e) {
+      console.log(e.message);
+      res.status(500).json({ message: "API Error" });
+    }
 
-    res.status(200).json(properties);
-  } catch (e) {
-    console.log(e.message);
-    res.status(500).json({ message: "API Error" });
+  }else{
+
+    try {
+      const properties = await Property.find(query).sort({$natural:-1}).limit(_end);
+  
+      res.status(200).json(properties);
+    } catch (e) {
+      console.log(e.message);
+      res.status(500).json({ message: "API Error" });
+    }
   }
 };
 
