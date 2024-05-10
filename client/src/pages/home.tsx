@@ -8,6 +8,7 @@ import {
   PropertyCard,
 } from "../components";
 import { AgentCard } from "../components";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 const home = () => {
   const {
@@ -42,7 +43,7 @@ const home = () => {
   const latestProperties = propertiesData?.data ?? [];
   const topAgents = agentsData?.data ?? [];
 
-  if (loading) return <Typography>Loading...</Typography>;
+  if (loading) return <LoadingScreen />;
   if (error) return <Typography>Something went wrong!</Typography>;
 
   console.log(topAgents);

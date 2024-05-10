@@ -32,7 +32,7 @@ const propertyDetails = () => {
   const propertyDetails = data?.data ?? {};
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 
   if (isError) {

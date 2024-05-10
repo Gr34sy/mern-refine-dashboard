@@ -5,6 +5,7 @@ import { Box, Typography, Stack } from "@mui/material";
 import { EditLocationAlt } from "@mui/icons-material";
 import { CustomButton } from "../components";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 const agentProfile = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const agentProfile = () => {
 
   const myProfile = data?.data ?? [];
 
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <div>error...</div>;
 
   return (

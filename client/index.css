@@ -41,11 +41,6 @@ a {
 
 
 /* loading spinner */
-/* .dark .loader::before {
-  border-color: #217099;
-  border: 5px solid #475be8;
-} */
-
 .loader {
   width: 48px;
   height: 48px;

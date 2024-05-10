@@ -2,6 +2,7 @@ import { useList } from "@refinedev/core";
 import { Box, Typography } from "@mui/material";
 
 import { AgentCard } from "../components";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 const Agents = () => {
   const { data, isLoading, isError } = useList({
@@ -10,7 +11,7 @@ const Agents = () => {
 
   const allAgents = data?.data ?? [];
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <div>Error</div>;
 
   return (

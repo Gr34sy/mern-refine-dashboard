@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useMemo } from "react";
 import { PropertyCard, CustomButton } from "../components";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 const AllProperties = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const AllProperties = () => {
       }
   }, [filters])
 
-  if (isLoading) return <Typography>Loading...</Typography>;
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <Typography>Error</Typography>;
 
   return (
