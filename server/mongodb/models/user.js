@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String, required: false
     },
-    // allReviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
+    allReviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     allProperties: [{type: mongoose.Schema.Types.ObjectId, ref: 'Property'}],
 })
 
