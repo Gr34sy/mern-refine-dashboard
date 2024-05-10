@@ -6,6 +6,7 @@ import connectDB from './mongodb/connect.js';
 import userRouter from './routes/user.routes.js';
 import propertyRouter from './routes/property.routes.js';
 import myProfileRouter from './routes/myProfile.routes.js';
+import reviewRouter from './routes/review.routes.js';
 
 dotenv.config();
 
@@ -30,5 +31,6 @@ const startServer = async () => {
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/properties', propertyRouter);
 app.use('/api/v1/my-profile', myProfileRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 startServer();
