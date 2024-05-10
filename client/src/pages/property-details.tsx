@@ -3,6 +3,7 @@ import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
 import {
+  AccountCircle,
   AlternateEmail,
   Delete,
   Edit,
@@ -272,16 +273,16 @@ const propertyDetails = () => {
                 }}
               />
               <CustomButton
-                title={!isCurrentUser ? "Review" : "Delete"}
-                backgroundColor={!isCurrentUser ? "#2ED480" : "#d42e2e"}
+                title={!isCurrentUser ? "Profile" : "Delete"}
+                backgroundColor={!isCurrentUser ? "secondary.main" : "#d42e2e"}
                 color="#FCFCFC"
                 fullWidth
-                icon={!isCurrentUser ? <Stars /> : <Delete />}
+                icon={!isCurrentUser ? <AccountCircle /> : <Delete />}
                 handleClick={() => {
                   if (isCurrentUser) {
                     handleDeleteProperty()
                   }else{
-                    navigate(`/reviews/create/${propertyDetails._id}`);
+                    navigate(`/agents/show/${propertyDetails.creator._id}`);
                   };
                 }}
               />
@@ -289,12 +290,28 @@ const propertyDetails = () => {
           </Stack>
 
           <Box>
-            <CustomButton
-              title="Book Now"
+            {/* <CustomButton
+              title="Agent Profile"
               backgroundColor="secondary.main"
               color="#FCFCFC"
-              fullWidth
-            />
+              handleClick={() => {
+                if(!isCurrentUser){
+                  navigate(`/agents/show/${propertyDetails.creator._id}`);
+                }
+              }}
+            /> */}
+            {!isCurrentUser && <CustomButton
+                title={"Review" }
+                backgroundColor={"#2ED480"}
+                color="#FCFCFC"
+                fullWidth
+                icon={<Stars />}
+                handleClick={() => {
+                  if (!isCurrentUser) {
+                    navigate(`/reviews/create/${propertyDetails._id}`);
+                  }
+                }}
+              />}
           </Box>
         </Box>
       </Box>
