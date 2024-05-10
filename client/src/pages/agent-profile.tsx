@@ -14,7 +14,7 @@ const agentProfile = () => {
   const myProfile = data?.data ?? [];
 
   if (isLoading) return <LoadingScreen />;
-  if (isError) return <div>error...</div>;
+  if (isError) return <div>Error...</div>;
 
   return (
     <Profile

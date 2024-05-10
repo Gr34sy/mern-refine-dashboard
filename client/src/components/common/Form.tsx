@@ -133,11 +133,11 @@ const Form = ({
                 Enter Property Price
               </FormHelperText>
               <TextField
+              type="number"
                 fullWidth
                 required
                 id="outlined-basic"
                 color="info"
-                type="number"
                 InputProps={{ inputProps: { min: 0 } }}
                 variant="outlined"
                 {...register("price", { required: true })}

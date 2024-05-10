@@ -22,21 +22,8 @@ import routerBindings, {
 import dataProvider from "@refinedev/simple-rest";
 import axios from "axios";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { CredentialResponse } from "./interfaces/google";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
 import { Login } from "./pages/login";
 import { parseJwt } from "./utils/parse-jwt";
 
@@ -58,9 +45,11 @@ import {
   EditProperty,
   PropertyDetails,
   MyProfile,
-  Reviews,
   CreateReview,
   EditProfile,
+  AllReviews,
+  EditReview,
+  ReviewDetails,
 } from "./pages";
 
 const axiosInstance = axios.create();
@@ -200,8 +189,10 @@ function App() {
                 },
                 {
                   name: "reviews",
-                  list: "/reviews",
+                  list: AllReviews,
+                  show: ReviewDetails,
                   create: CreateReview,
+                  edit: EditReview,
                   icon: <StarOutlineRounded />,
                 },
                 {
@@ -258,8 +249,10 @@ function App() {
                   </Route>
 
                   <Route path="/reviews">
-                    <Route index element={<Reviews />} />
+                    <Route index element={<AllReviews />} />
                     <Route path="create/:id" element={<CreateReview />} />
+                    <Route path="show/:id" element={<ReviewDetails />} />
+                    <Route path="edit/:id" element={<EditReview />} />
                   </Route>
 
                   <Route path="/my-profile">
@@ -267,19 +260,6 @@ function App() {
                     <Route path="edit/:id" element={<EditProfile />} />
                   </Route>
 
-                  <Route path="/blog-posts">
-                    <Route index element={<BlogPostList />} />
-                    <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
-                  </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
-                  </Route>
-                  <Route path="*" element={<ErrorComponent />} />
                 </Route>
                 <Route
                   element={
