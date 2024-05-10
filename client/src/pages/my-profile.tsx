@@ -34,14 +34,14 @@ const MyProfile = () => {
           title="Edit"
           icon={<EditLocationAlt />}
           // @ts-ignore
-          handleClick={() => navigate(`edit/${user?.userid}`)}
+          handleClick={() => navigate(`edit/${myProfile._id}`)}
         />
       </Stack>
 
       <Profile
       type="My"
       // @ts-ignore
-      img={myProfile.img}
+      img={myProfile.image || "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"}
       // @ts-ignore
       name={myProfile.name}
       // @ts-ignore

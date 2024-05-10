@@ -9,6 +9,16 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: String, required: true
     },
+    location: {
+        type: String, required: false
+    },
+    phone: {
+        type: String, required: false
+    },
+    image: {
+        type: String, required: false
+    },
+    // allReviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     allProperties: [{type: mongoose.Schema.Types.ObjectId, ref: 'Property'}],
 })
 

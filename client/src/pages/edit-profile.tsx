@@ -13,6 +13,7 @@ import { CustomButton } from "../components";
 import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
 import { useGetIdentity } from "@refinedev/core";
+import { useNavigate } from "react-router-dom";
 
 const editProfile = () => {
   const [profileImage, setProfileImage] = useState({
@@ -20,7 +21,7 @@ const editProfile = () => {
     url: "",
   });
   const { data: user } = useGetIdentity();
-  const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     refineCore: { onFinish, formLoading },
@@ -29,37 +30,29 @@ const editProfile = () => {
   } = useForm();
 
   const handleImageChange = (file: File) => {
-    const reader = (readFile: File) => new Promise<string>((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.onload = () => resolve(fileReader.result as string);
-      fileReader.readAsDataURL(readFile);
-    });
+    const reader = (readFile: File) =>
+      new Promise<string>((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => resolve(fileReader.result as string);
+        fileReader.readAsDataURL(readFile);
+      });
 
-    reader(file).then((result: string) => setProfileImage({ name: file?.name, url: result }));
+    reader(file).then((result: string) =>
+      setProfileImage({ name: file?.name, url: result })
+    );
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    if(!profileImage.name) return alert('Please select an image');
+    if (!profileImage.name) return alert("Please select an image");
 
-    if (
-      typeof user === "object" &&
-      user &&
-      "email" in user &&
-      typeof user.email === "string"
-    ){
-      await onFinish({
-        ...data,
-        photo: profileImage.url, 
-        email: user.email,      
-      })
-    }
+    //@ts-ignore
+    await onFinish({ ...data, email: user.email, image: profileImage.url });
   };
 
   return (
-    
     <Box>
       <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
-      Edit your profile - {id}
+        Edit your profile
       </Typography>
 
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="primary.main">
@@ -90,7 +83,7 @@ const editProfile = () => {
               id="outlined-basic"
               color="info"
               variant="outlined"
-              {...register("user-location", { required: true })}
+              {...register("location", { required: true })}
             />
           </FormControl>
 
@@ -148,16 +141,33 @@ const editProfile = () => {
               </Button>
             </Stack>
 
-            <Typography fontSize={14} color="secondary.contrastText" sx={{wordBreak: 'break-all'}}>
+            <Typography
+              fontSize={14}
+              color="secondary.contrastText"
+              sx={{ wordBreak: "break-all" }}
+            >
               {profileImage?.name}
             </Typography>
           </Stack>
 
-          <CustomButton type="submit" title={formLoading ? 'Submitting...' : 'Submit'} backgroundColor="secondary.main" color="#fcfcfc" />
+          <Stack direction="row" gap={2} flexWrap="wrap">
+            <CustomButton
+              type="submit"
+              title={formLoading ? "Submitting..." : "Submit"}
+              backgroundColor="secondary.main"
+              color="#fcfcfc"
+            />
+            <CustomButton
+              title={"Back"}
+              backgroundColor="secondary.main"
+              color="#fcfcfc"
+              handleClick={() => navigate("/my-profile")}
+            />
+          </Stack>
         </form>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default editProfile;
