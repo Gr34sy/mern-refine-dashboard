@@ -1,9 +1,9 @@
-import React from 'react'
+import LoadingScreen from "../components/common/LoadingScreen"
 
 const reviews = () => {
   return (
     <div>
-      Review
+      <LoadingScreen />
     </div>
   )
 }

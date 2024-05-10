@@ -12,6 +12,7 @@ import {
   Star,
   Stars,
 } from "@mui/icons-material";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 function checkImage(url: any) {
   const img = new Image();
@@ -31,33 +32,31 @@ const propertyDetails = () => {
   const propertyDetails = data?.data ?? {};
 
   if (isLoading) {
-      return <div>Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   if (isError) {
-      return <div>Something went wrong!</div>;
+    return <div>Something went wrong!</div>;
   }
 
-  //@ts-ignore 
+  //@ts-ignore
   const isCurrentUser = user.email === propertyDetails.creator.email;
 
   const handleDeleteProperty = () => {
-      const response = confirm(
-          "Are you sure you want to delete this property?",
+    const response = confirm("Are you sure you want to delete this property?");
+    if (response) {
+      mutate(
+        {
+          resource: "properties",
+          id: id as string,
+        },
+        {
+          onSuccess: () => {
+            navigate("/properties");
+          },
+        }
       );
-      if (response) {
-          mutate(
-              {
-                  resource: "properties",
-                  id: id as string,
-              },
-              {
-                  onSuccess: () => {
-                      navigate("/properties");
-                  },
-              },
-          );
-      }
+    }
   };
 
   console.log(propertyDetails.creator);
@@ -261,13 +260,11 @@ const propertyDetails = () => {
                 backgroundColor="secondary.main"
                 color="#FCFCFC"
                 fullWidth
-                icon={
-                  !isCurrentUser ? <Email /> : <Edit />
-              }
+                icon={!isCurrentUser ? <Email /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
                     navigate(`/properties/edit/${propertyDetails._id}`);
-                  }else{
+                  } else {
                     window.location.href = `mailto:${propertyDetails.creator.mail}?subject=Subject&body=message%20goes%20here`;
                   }
                 }}
@@ -280,28 +277,33 @@ const propertyDetails = () => {
                 icon={!isCurrentUser ? <AccountCircle /> : <Delete />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    handleDeleteProperty()
-                  }else{
+                    handleDeleteProperty();
+                  } else {
                     navigate(`/agents/show/${propertyDetails.creator._id}`);
-                  };
+                  }
                 }}
               />
             </Stack>
           </Stack>
 
           <Box>
-            {/* <CustomButton
-              title="Agent Profile"
-              backgroundColor="secondary.main"
-              color="#FCFCFC"
-              handleClick={() => {
-                if(!isCurrentUser){
-                  navigate(`/agents/show/${propertyDetails.creator._id}`);
-                }
+            <iframe
+              style={{
+                border: 'none',
+                borderRadius: '5px'
               }}
-            /> */}
-            {!isCurrentUser && <CustomButton
-                title={"Review" }
+              width="100%"
+              height="370"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://maps.google.com/maps?&q="+${propertyDetails.location}"&output=embed`}
+            ></iframe>
+          </Box>
+
+          <Box>
+            {!isCurrentUser && (
+              <CustomButton
+                title={"Review"}
                 backgroundColor={"#2ED480"}
                 color="#FCFCFC"
                 fullWidth
@@ -311,7 +313,8 @@ const propertyDetails = () => {
                     navigate(`/reviews/create/${propertyDetails._id}`);
                   }
                 }}
-              />}
+              />
+            )}
           </Box>
         </Box>
       </Box>
