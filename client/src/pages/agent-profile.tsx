@@ -20,7 +20,7 @@ const agentProfile = () => {
     <Profile
       type="Agent"
       // @ts-ignore
-      img={myProfile.img}
+      img={myProfile.image}
       // @ts-ignore
       name={myProfile.name}
       // @ts-ignore

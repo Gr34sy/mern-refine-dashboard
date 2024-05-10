@@ -1,11 +1,11 @@
 import { AgentCardProp, InfoBarProps } from "../../interfaces/agent";
 import { EmailOutlined, LocationCity, Phone, Place } from "@mui/icons-material";
 import { useGetIdentity } from "@refinedev/core";
-import { Box, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const InfoBar = ({icon, name}: InfoBarProps) => (
-  <Stack flex={1} minWidth={{xs: '100%', sm: 300}} gap={1.5} direction="row">
+const InfoBar = ({ icon, name }: InfoBarProps) => (
+  <Stack flex={1} minWidth={{ xs: "100%", sm: 300 }} gap={1.5} direction="row">
     {icon}
     <Typography color="primary.contrastText">{name}</Typography>
   </Stack>
@@ -29,17 +29,22 @@ const AgentCard = ({
   };
 
   return (
-    <Box
+    <Card
       component={Link}
+      elevation={0}
       to={generateLink()}
-      width="100%"
       sx={{
+        width: "100%",
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         gap: "20px",
         padding: "20px",
         bgcolor: "primary.main",
-        "&:hover": { boxShadow: "0 22px 45px 2px rgba(61, 57, 57, 0.1)" },
+        "&:hover": {
+          boxShadow: "0 0 10px 2px",
+          boxShadowColor: "secondary.contrastText",
+          cursor: "pointer",
+        },
       }}
     >
       <img
@@ -69,25 +74,25 @@ const AgentCard = ({
         </Stack>
 
         <Stack gap={2} direction="row" flexWrap="wrap" alignItems="center">
-            <InfoBar 
-            icon={<EmailOutlined sx={{color: 'secondary.contrastText'}} />}
+          <InfoBar
+            icon={<EmailOutlined sx={{ color: "secondary.contrastText" }} />}
             name={email}
-            />
-            <InfoBar 
-            icon={<Phone sx={{color: 'secondary.contrastText'}} />}
+          />
+          <InfoBar
+            icon={<Phone sx={{ color: "secondary.contrastText" }} />}
             name={phone}
-            />
-            <InfoBar 
-            icon={<Place sx={{color: 'secondary.contrastText'}} />}
+          />
+          <InfoBar
+            icon={<Place sx={{ color: "secondary.contrastText" }} />}
             name={location}
-            />
-            <InfoBar 
-            icon={<LocationCity sx={{color: 'secondary.contrastText'}} />}
+          />
+          <InfoBar
+            icon={<LocationCity sx={{ color: "secondary.contrastText" }} />}
             name={`${noOfProperties} Properties`}
-            />
+          />
         </Stack>
       </Stack>
-    </Box>
+    </Card>
   );
 };
 
