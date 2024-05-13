@@ -1,9 +1,4 @@
-import { useParams } from "react-router-dom";
-import { useOne } from "@refinedev/core";
-import { useNavigate } from "react-router-dom"; 
 import CustomButton from "./CustomButton";
-import { useForm } from "@refinedev/react-hook-form";
-import { FieldValues } from "react-hook-form";
 import { ReviewFormProps } from "../../interfaces/common";
 import {
   Box,
@@ -29,7 +24,7 @@ const ReviewForm = ({
     return (
       <Box>
         <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
-        Create review for {propertyName}
+        {type} review for {propertyName}
         </Typography>
   
         <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="primary.main">

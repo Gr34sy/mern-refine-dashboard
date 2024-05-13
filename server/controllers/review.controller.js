@@ -7,7 +7,16 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
-const getAllReviews = async (req, res) => {};
+const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({});
+
+    res.status(200).json(reviews);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: "API Error" });
+  }
+};
 
 const getReviewById = async (req, res) => {};
 
@@ -20,9 +29,12 @@ const createReview = async (req, res) => {
     session.startTransaction();
 
     const user = await User.findOne({ _id: userId }).session(session);
-    const property = await Property.findOne({ _id: propertyId }).session(session);
     if (!user) throw new Error("User not found");
+
+    const property = await Property.findOne({ _id: propertyId }).session(session);
     if(!property) throw new Error("Property not found");
+
+    if(property.reviewedByUsers.includes(user._id)) throw new Error("You have already reviewed this property");
 
     const newReview = await Review.create({
         creator: user._id,
@@ -47,7 +59,28 @@ const createReview = async (req, res) => {
   }
 };
 
-const updateReview = async (req, res) => {};
+const updateReview = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const {description, rating} = req.body;
+
+    const review = await Review.findOne({property: id});
+    if(!review) throw new Error("Review not found");
+
+    await Review.findByIdAndUpdate({_id: review._id}, {
+      $set: { 
+        description,
+        rating,
+      }
+    })
+
+    res.status(200).json({message: 'Review updated successfully'})
+
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: "Review update failed" });
+  }
+};
 
 const deleteReview = async (req, res) => {};
 

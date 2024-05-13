@@ -38,7 +38,7 @@ const editProperty = () => {
     propertyImage={propertyImage}
     onFinishHandler={onFinishHandler}
     handleImageChange={handleImageChange}
-  ></Form>
+  />
   )
 }
 

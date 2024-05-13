@@ -28,11 +28,6 @@ const createReview = () => {
 
   const property = data?.data ?? [];
 
-  // @ts-ignore
-  if(user){
-    console.log(user);
-  }
-
   const onFinishHandler = async (data: FieldValues) => {
     await onFinish({
       ...data,
@@ -49,7 +44,7 @@ const createReview = () => {
   return (
     <ReviewForm
     // @ts-ignore
-      propertyName={property.name}
+      propertyName={property.title}
       onFinishHandler={onFinishHandler}
       handleSubmit={handleSubmit}
       register={register}

@@ -40,11 +40,11 @@ const updateProfile = async (req, res) => {
     
         await User.findByIdAndUpdate({_id: id}, { 
             $set: { 
-                location,
-                phone,
-                image: imageUrl.url,
-             }
-            } 
+              location,
+              phone,
+              image: imageUrl.url,
+            }
+          } 
         )
     
         res.status(200).json({message: 'Your profile updated successfully'})
