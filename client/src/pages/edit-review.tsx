@@ -6,7 +6,7 @@ import ReviewForm from "../components/common/ReviewForm";
 import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
 
-const createReview = () => {
+const editReview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -51,4 +51,4 @@ const createReview = () => {
   );
 };
 
-export default createReview;
+export default editReview;
