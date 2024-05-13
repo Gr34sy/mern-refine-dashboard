@@ -9,6 +9,7 @@ const PropertySchema = new mongoose.Schema({
     photo: {type: String, required: true},
     creator: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     allReviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
+    reviewedByUsers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 })
 
 const propertyModel = mongoose.model('Property', PropertySchema);

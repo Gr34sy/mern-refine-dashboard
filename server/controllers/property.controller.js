@@ -76,8 +76,7 @@ const getPropertyDetail = async (req, res) => {
 
 const createProperty = async (req, res) => {
   try {
-    const { title, description, propertyType, location, price, photo, email } =
-      req.body;
+    const { title, description, propertyType, location, price, photo, email } = req.body;
 
     //start new session
     const session = await mongoose.startSession();
@@ -107,7 +106,7 @@ const createProperty = async (req, res) => {
     res.status(200).json({ message: "Property created successfully!" });
   } catch (e) {
     console.error(e.message);
-    res.status(500).json({ message: "API Error" });
+    res.status(500).json({ message: "Failed creating property" });
   }
 };
 
