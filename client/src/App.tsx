@@ -30,7 +30,6 @@ import { parseJwt } from "./utils/parse-jwt";
 import { ThemedHeaderV2, ThemedSiderV2, ThemedTitleV2 } from "./components";
 import {
   AccountCircleOutlined,
-  ChatBubbleOutline,
   PeopleAltOutlined,
   StarOutlineRounded,
   VillaOutlined,
@@ -87,7 +86,6 @@ function App() {
               ...profileObj,
               avatar: profileObj.picture,
               userid: data._id,
-              admin: false,
             })
           );
           localStorage.setItem("token", `${credential}`);

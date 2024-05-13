@@ -1,5 +1,5 @@
 import { Typography, Box, Stack } from "@mui/material";
-import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
+import { useDelete, useGetIdentity, useShow, useOne } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
 import {
@@ -42,6 +42,11 @@ const propertyDetails = () => {
   //@ts-ignore
   const isCurrentUser = user.email === propertyDetails.creator.email;
 
+  // @ts-ignore
+  const wasAlreadyReviewed = propertyDetails.reviewedByUsers.includes(user.userid);
+  // @ts-ignore
+  console.log(wasAlreadyReviewed);
+
   const handleDeleteProperty = () => {
     const response = confirm("Are you sure you want to delete this property?");
     if (response) {
@@ -59,7 +64,6 @@ const propertyDetails = () => {
     }
   };
 
-  console.log(propertyDetails.creator);
   return (
     <Box
       borderRadius="15px"
@@ -289,8 +293,8 @@ const propertyDetails = () => {
           <Box>
             <iframe
               style={{
-                border: 'none',
-                borderRadius: '5px'
+                border: "none",
+                borderRadius: "5px",
               }}
               width="100%"
               height="370"
@@ -303,14 +307,18 @@ const propertyDetails = () => {
           <Box>
             {!isCurrentUser && (
               <CustomButton
-                title={"Review"}
+                title={wasAlreadyReviewed ? "Edit Review" : "Review"}
                 backgroundColor={"#2ED480"}
                 color="#FCFCFC"
                 fullWidth
                 icon={<Stars />}
                 handleClick={() => {
                   if (!isCurrentUser) {
-                    navigate(`/reviews/create/${propertyDetails._id}`);
+                    if(wasAlreadyReviewed) {
+                      navigate(`/reviews/edit/${propertyDetails._id}`);
+                    }else{
+                      navigate(`/reviews/create/${propertyDetails._id}`);
+                    }
                   }
                 }}
               />

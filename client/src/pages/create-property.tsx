@@ -31,18 +31,14 @@ const CreateProperty = () => {
   const onFinishHandler = async (data: FieldValues) => {
     if(!propertyImage.name) return alert('Please select an image');
 
-    if (
-      typeof user === "object" &&
-      user &&
-      "email" in user &&
-      typeof user.email === "string"
-    ){
+   
       await onFinish({
         ...data,
         photo: propertyImage.url, 
+        // @ts-ignore
         email: user.email,      
       })
-    }
+    
   };
 
   return (

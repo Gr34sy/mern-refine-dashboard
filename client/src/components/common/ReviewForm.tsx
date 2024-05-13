@@ -20,7 +20,6 @@ const ReviewForm = ({
     type,
     register,
     handleSubmit,
-    handleImageChange,
     formLoading,
     onFinishHandler,
     propertyName,
@@ -42,7 +41,7 @@ const ReviewForm = ({
               flexDirection: "column",
               gap: "20px",
             }}
-            // onSubmit={handleSubmit(onFinishHandler)}
+            onSubmit={handleSubmit(onFinishHandler)}
           >
             <FormControl>
               <FormHelperText
@@ -64,7 +63,7 @@ const ReviewForm = ({
                 color="info"
                 variant="outlined"
                 InputProps={{ inputProps: { min: 0, max: 5 } }}
-                // {...register("rating", { required: true })}
+                {...register("rating", { required: true })}
               />
             </FormControl>
   
@@ -92,7 +91,7 @@ const ReviewForm = ({
                   borderColor: "#919191",
                   color: "#919191",
                 }}
-                // {...register("description", { required: true })}
+                {...register("description", { required: true })}
               />
             </FormControl>
                 
