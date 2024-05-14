@@ -24,12 +24,12 @@ const reviews = () => {
       <Stack direction="column" width="100%" gap={4}>
         <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
           {allReviews.map((review) => (
+            // @ts-ignore
             <ReviewCard
               key={review._id}
               id={review._id}
               creator={review.creator}
               property={review.property}
-              rating={review.rating}
             />
           ))}
         </Box>
