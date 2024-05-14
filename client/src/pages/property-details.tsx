@@ -307,9 +307,8 @@ const propertyDetails = () => {
           <Box>
             {!isCurrentUser && (
               <CustomButton
-                title={wasAlreadyReviewed ? "Already Reviewed" : "Review"}
+                title={wasAlreadyReviewed ? "Edit Review" : "Review"}
                 backgroundColor={"#2ED480"}
-                disabled={wasAlreadyReviewed}
                 color="#FCFCFC"
                 fullWidth
                 icon={<Stars />}

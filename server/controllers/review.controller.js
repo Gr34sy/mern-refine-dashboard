@@ -34,25 +34,34 @@ const createReview = async (req, res) => {
     const property = await Property.findOne({ _id: propertyId }).session(session);
     if(!property) throw new Error("Property not found");
 
-    if(property.reviewedByUsers.includes(user._id)) throw new Error("You have already reviewed this property");
-
-    const newReview = await Review.create({
+    const existingReview = await Review.findOne({property: property._id, creator: user._id});
+    if(existingReview) {
+      // If review is already created
+      await Review.findByIdAndUpdate({_id: existingReview._id}, { 
+        $set: { 
+          description,
+          rating,
+        }
+      })
+    }else{
+      // If review isn't already created
+      const newReview = await Review.create({
         creator: user._id,
         property: property._id,
-        description, 
+        description,
         rating,
-    });
+      });
 
-    user.allReviews.push(newReview._id);
-    await user.save({ session });
+      user.allReviews.push(newReview._id);
+      await user.save({ session });
 
-    property.allReviews.push(newReview._id);
-    property.reviewedByUsers.push(newReview.creator);
-    await property.save({ session });
+      property.allReviews.push(newReview._id);
+      property.reviewedByUsers.push(newReview.creator);
+      await property.save({ session });
+    }
 
     await session.commitTransaction();
-
-    res.status(200).json({ message: "Review created successfully!" });
+    res.status(200).json({ message: `Review ${existingReview ? 'edited' : 'created'} successfully!` });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: "Failed creating review" });
