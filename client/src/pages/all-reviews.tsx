@@ -1,6 +1,7 @@
 import LoadingScreen from "../components/common/LoadingScreen";
 import { useList } from "@refinedev/core";
-import { Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import ReviewCard from "../components/common/ReviewCard";
 
 const reviews = () => {
   const { data, isLoading, isError } = useList({
@@ -13,9 +14,9 @@ const reviews = () => {
   if (isError) return <Typography>Error</Typography>;
 
   return (
-    <div>
-      <LoadingScreen />
-    </div>
+    <Box>
+      <ReviewCard creator={{name: 'Piotr Słupski', email: 'slupek3'}} property={{title: 'Downtown', type: 'Condos'}} rating={3} description="lorem ipsum30"/>
+    </Box>
   )
 }
 
