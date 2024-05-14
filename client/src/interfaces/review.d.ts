@@ -3,5 +3,4 @@ export interface ReviewCardProps {
     property: Object,
     creator: Object,
     rating: number,
-    description: string,
 }

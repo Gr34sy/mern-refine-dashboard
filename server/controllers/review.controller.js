@@ -9,7 +9,8 @@ dotenv.config();
 
 const getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find({});
+    const reviews = await Review.find({}).populate('creator')
+    .populate('property');
 
     res.status(200).json(reviews);
   } catch (e) {
@@ -31,19 +32,27 @@ const createReview = async (req, res) => {
     const user = await User.findOne({ _id: userId }).session(session);
     if (!user) throw new Error("User not found");
 
-    const property = await Property.findOne({ _id: propertyId }).session(session);
-    if(!property) throw new Error("Property not found");
+    const property = await Property.findOne({ _id: propertyId }).session(
+      session
+    );
+    if (!property) throw new Error("Property not found");
 
-    const existingReview = await Review.findOne({property: property._id, creator: user._id});
-    if(existingReview) {
+    const existingReview = await Review.findOne({
+      property: property._id,
+      creator: user._id,
+    });
+    if (existingReview) {
       // If review is already created
-      await Review.findByIdAndUpdate({_id: existingReview._id}, { 
-        $set: { 
-          description,
-          rating,
+      await Review.findByIdAndUpdate(
+        { _id: existingReview._id },
+        {
+          $set: {
+            description,
+            rating,
+          },
         }
-      })
-    }else{
+      );
+    } else {
       // If review isn't already created
       const newReview = await Review.create({
         creator: user._id,
@@ -61,20 +70,19 @@ const createReview = async (req, res) => {
     }
 
     await session.commitTransaction();
-    res.status(200).json({ message: `Review ${existingReview ? 'edited' : 'created'} successfully!` });
+    res
+      .status(200)
+      .json({
+        message: `Review ${
+          existingReview ? "edited" : "created"
+        } successfully!`,
+      });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: "Failed creating review" });
   }
 };
 
-const deleteReview = async (req, res) => {
+const deleteReview = async (req, res) => {};
 
-};
-
-export {
-  getAllReviews,
-  getReviewById,
-  createReview,
-  deleteReview,
-};
+export { getAllReviews, getReviewById, createReview, deleteReview };

@@ -5,8 +5,6 @@ import {
   Typography,
   Stack,
   Card,
-  CardMedia,
-  CardContent,
 } from "@mui/material";
 
 import { ReviewCardProps } from "../../interfaces/review";
@@ -15,7 +13,6 @@ const ReviewCard = ({
   id,
   property,
   creator,
-  description,
   rating,
 }: ReviewCardProps) => {
  
@@ -31,13 +28,12 @@ const ReviewCard = ({
       sx={{
         display: "flex",
         flexDirection:  "row",
-        flexWrap: "wrap",
         justifyContent: "space-between",
         alignItems: "center",
-        gap: 2,
+        gap: 3,
         bgcolor: "primary.main",
         maxWidth: "400px",
-        padding: "10px",
+        padding: "15px",
         "&:hover": {
           boxShadow: "0 0 10px 2px",
           boxShadowColor: "secondary.contrastText",
@@ -51,11 +47,11 @@ const ReviewCard = ({
         flexDirection="column"
         flexWrap="wrap"
         justifyContent="space-between"
-        gap={2}
+        gap={1}
       >
         <Stack>
           <Typography
-            fontSize={18}
+            fontSize={16}
             fontWeight={700}
             color="primary.contrastText"
           >
@@ -104,7 +100,7 @@ const ReviewCard = ({
             fontWeight={600}
           >
             {/* @ts-ignore */}
-            <Typography fontSize={15}>{creator.name}</Typography>
+            <Typography fontSize={14} fontWeight={500}>{creator.name}</Typography>
 
             <Typography fontSize={13} color="secondary.contrastText">
               {/* @ts-ignore */}
