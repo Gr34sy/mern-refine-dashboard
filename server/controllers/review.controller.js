@@ -59,35 +59,13 @@ const createReview = async (req, res) => {
   }
 };
 
-const updateReview = async (req, res) => {
-  try {
-    const {id} = req.params;
-    const {description, rating} = req.body;
+const deleteReview = async (req, res) => {
 
-    const review = await Review.findOne({property: id});
-    if(!review) throw new Error("Review not found");
-
-    await Review.findByIdAndUpdate({_id: review._id}, {
-      $set: { 
-        description,
-        rating,
-      }
-    })
-
-    res.status(200).json({message: 'Review updated successfully'})
-
-  } catch (e) {
-    console.log(e.message);
-    res.status(500).json({ message: "Review update failed" });
-  }
 };
-
-const deleteReview = async (req, res) => {};
 
 export {
   getAllReviews,
   getReviewById,
   createReview,
-  updateReview,
   deleteReview,
 };

@@ -47,7 +47,6 @@ import {
   CreateReview,
   EditProfile,
   AllReviews,
-  EditReview,
   ReviewDetails,
 } from "./pages";
 
@@ -190,7 +189,7 @@ function App() {
                   list: AllReviews,
                   show: ReviewDetails,
                   create: CreateReview,
-                  edit: EditReview,
+                  edit: '/edit/:id',
                   icon: <StarOutlineRounded />,
                 },
                 {
@@ -250,7 +249,6 @@ function App() {
                     <Route index element={<AllReviews />} />
                     <Route path="create/:id" element={<CreateReview />} />
                     <Route path="show/:id" element={<ReviewDetails />} />
-                    <Route path="edit/:id" element={<EditReview />} />
                   </Route>
 
                   <Route path="/my-profile">

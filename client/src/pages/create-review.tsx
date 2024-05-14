@@ -45,6 +45,7 @@ const createReview = () => {
     <ReviewForm
     // @ts-ignore
       propertyName={property.title}
+      onFinish={onFinish}
       onFinishHandler={onFinishHandler}
       handleSubmit={handleSubmit}
       register={register}

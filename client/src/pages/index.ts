@@ -11,7 +11,6 @@ import AllReviews from './all-reviews';
 import CreateReview from './create-review';
 import EditProfile from './edit-profile';
 import ReviewDetails from './review-details';
-import EditReview from './edit-review';
 
 export {
   AgentProfile,
@@ -26,6 +25,5 @@ export {
   EditProfile,
   AllReviews,
   CreateReview,
-  EditReview,
   ReviewDetails,
 };

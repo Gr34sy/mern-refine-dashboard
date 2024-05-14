@@ -307,18 +307,15 @@ const propertyDetails = () => {
           <Box>
             {!isCurrentUser && (
               <CustomButton
-                title={wasAlreadyReviewed ? "Edit Review" : "Review"}
+                title={wasAlreadyReviewed ? "Already Reviewed" : "Review"}
                 backgroundColor={"#2ED480"}
+                disabled={wasAlreadyReviewed}
                 color="#FCFCFC"
                 fullWidth
                 icon={<Stars />}
                 handleClick={() => {
                   if (!isCurrentUser) {
-                    if(wasAlreadyReviewed) {
-                      navigate(`/reviews/edit/${propertyDetails._id}`);
-                    }else{
-                      navigate(`/reviews/create/${propertyDetails._id}`);
-                    }
+                    navigate(`/reviews/create/${propertyDetails._id}`);
                   }
                 }}
               />

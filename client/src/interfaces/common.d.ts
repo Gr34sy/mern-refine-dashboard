@@ -42,6 +42,7 @@ export interface FormProps {
 }
 
 export interface ReviewFormProps {
+    onFinish: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
     type: string,
     register: any,
     goBackFunction: function,
