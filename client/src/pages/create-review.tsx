@@ -7,6 +7,7 @@ import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
 import { useGetIdentity } from "@refinedev/core";
 
+
 const createReview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const createReview = () => {
       register={register}
       type="Create"
       formLoading={formLoading}
-      goBackFunction={() => navigate(`/properties/show/${id}`)}
+      goBackFunction={() => navigate(-1)}
     />
   );
 };

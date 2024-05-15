@@ -95,6 +95,32 @@ const createReview = async (req, res) => {
   }
 };
 
-const deleteReview = async (req, res) => {};
+const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const reviewToDelete = await Review.findById({ _id: id }).populate(
+      "creator",
+    ).populate("property");
+    if (!reviewToDelete) throw new Error("Review not found");
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    await reviewToDelete.deleteOne({ session });
+    reviewToDelete.creator.allReviews.pull(reviewToDelete);
+    reviewToDelete.property.allReviews.pull(reviewToDelete);
+    reviewToDelete.property.reviewedByUsers.pull(reviewToDelete.creator);
+
+    await reviewToDelete.creator.save({ session });
+    await reviewToDelete.property.save({session})
+    await session.commitTransaction();
+
+    res.status(200).json({ message: "Review deleted successfully" });
+} catch (error) {
+  console.log(error.message);
+  res.status(500).json({ message: "Failed deleting the review" });
+}
+};
 
 export { getAllReviews, getReviewById, createReview, deleteReview };

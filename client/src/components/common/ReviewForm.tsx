@@ -93,6 +93,7 @@ const ReviewForm = ({
             <Stack direction="row" gap={2} flexWrap="wrap">
             <CustomButton type="submit" title={formLoading ? 'Submitting...' : 'Submit'} backgroundColor="secondary.main" color="#fcfcfc" />
             <CustomButton
+              outlined
               title={"Back"}
               backgroundColor="secondary.main"
               color="#fcfcfc"

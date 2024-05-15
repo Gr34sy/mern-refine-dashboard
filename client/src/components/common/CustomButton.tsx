@@ -10,6 +10,7 @@ const CustomButton = ({
   fullWidth,
   icon,
   disabled,
+  outlined,
   handleClick,
 }: CustomButtonProps) => {
   return (
@@ -21,13 +22,18 @@ const CustomButton = ({
         padding: "10px 15px",
         width: fullWidth ? "100%" : "fit-content",
         minWidth: 130,
-        backgroundColor,
-        color,
+        backgroundColor: outlined ? color : backgroundColor,
+        color: outlined ? backgroundColor : color,
+        borderWidth: outlined ? "2px" : "0",
+        borderStyle: outlined ? "solid" : "none",
+        borderColor: outlined ? backgroundColor : "transparent",
         fontSize: 16,
         fontWeight: 600,
         gap: "10px",
         textTransform: "capitalize",
-        "&:hover": {
+        "&:hover": outlined ? {
+          opacity: 0.8,
+        }: {
           opacity: 0.9,
           backgroundColor,
         },

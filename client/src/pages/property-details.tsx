@@ -45,8 +45,14 @@ const propertyDetails = () => {
 
   // @ts-ignore
   const wasAlreadyReviewed = propertyDetails.reviewedByUsers.includes(user.userid);
+
   // @ts-ignore
-  console.log(wasAlreadyReviewed);
+  const starsAmount = propertyDetails.allReviews.reduce((acc, review) => acc + review.rating ,0);
+  const avgStars = Math.round(starsAmount/propertyDetails.allReviews.length);
+  const stars = [];
+  for(let i = 0; i < avgStars; i++){
+    stars.push(i);
+  }
 
   const handleDeleteProperty = () => {
     const response = confirm("Are you sure you want to delete this property?");
@@ -107,11 +113,14 @@ const propertyDetails = () => {
                 >
                   {propertyDetails.propertyType}
                 </Typography>
-                <Box>
-                  {[1, 2, 3, 4, 5].map((star) => (
+                {stars.length > 0 && <Box>
+                  {stars.map((star) => (
                     <Star key={`star-${star}`} sx={{ color: "#f2c94c" }} />
                   ))}
-                </Box>
+                </Box>}
+                {!(stars.length > 0) && <Box>
+                  <Typography fontSize={14} fontWeight={300} color="secondary.contrastText">No reviews</Typography>
+                </Box>}
               </Stack>
 
               <Stack
@@ -332,7 +341,7 @@ const propertyDetails = () => {
         <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
           {propertyDetails.allReviews.length > 0
             ? "Reviews"
-            : "No Reviews"}
+            : ""}
         </Typography>
 
         <Stack mt="20px" display="flex" flexDirection="row" gap={3}>
