@@ -17,7 +17,8 @@ export interface ProfileProps {
     location: string,
     phone: string,
     img: string,
-    properties: Array | undefined
+    properties: Array | undefined,
+    reviews: Array | undefined,
 }
 
 export interface PropertyProps {

@@ -11,7 +11,7 @@ const agentProfile = () => {
   });
 
 
-  const myProfile = data?.data ?? [];
+  const agentProfile = data?.data ?? [];
 
   if (isLoading) return <LoadingScreen />;
   if (isError) return <div>Error...</div>;
@@ -20,19 +20,21 @@ const agentProfile = () => {
     <Profile
       type="Agent"
       // @ts-ignore
-      img={myProfile.image}
+      img={agentProfile.image}
       // @ts-ignore
-      name={myProfile.name}
+      name={agentProfile.name}
       // @ts-ignore
-      email={myProfile.email}
+      email={agentProfile.email}
       // @ts-ignore
-      phone={myProfile.phone || "not set"}
+      phone={agentProfile.phone || "not set"}
       // @ts-ignore
-      location={myProfile.location || "not set"}
+      location={agentProfile.location || "not set"}
       // @ts-ignore
-      avatar={myProfile.avatar}
+      avatar={agentProfile.avatar}
       // @ts-ignore
-      properties={myProfile.allProperties}
+      properties={agentProfile.allProperties}
+      // @ts-ignore
+      reviews={agentProfile.allReviews}
     />
   );
 };

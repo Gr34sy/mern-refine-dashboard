@@ -63,7 +63,7 @@ const ReviewCard = ({
                 color="secondary.contrastText"
               >
                 {/* @ts-ignore */}
-                {property.type}
+                {property.propertyType}
               </Typography>
             </Stack>
           )}
@@ -81,7 +81,7 @@ const ReviewCard = ({
           </Box>
         </Stack>
 
-        <Box>
+        {creator && (<Box>
           <Stack direction="row" gap={1} alignItems="center">
             <img
               /* @ts-ignore */
@@ -112,7 +112,7 @@ const ReviewCard = ({
               </Typography>
             </Stack>
           </Stack>
-        </Box>
+        </Box>)}
       </Stack>
 
       {description && (

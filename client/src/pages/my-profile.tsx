@@ -54,6 +54,8 @@ const MyProfile = () => {
       avatar={myProfile.avatar}
       // @ts-ignore
       properties={myProfile.allProperties}
+      // @ts-ignore
+      reviews={myProfile.allReviews}
     />
     </Box>
   );

@@ -2,7 +2,7 @@ import { ProfileProps, PropertyProps } from "../../interfaces/common";
 import PropertyCard from "./PropertyCard";
 import { Email, Phone, Place } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import ReviewCard from "./ReviewCard";
 
 function checkImage(url: any) {
   let img = new Image();
@@ -18,6 +18,7 @@ const Profile = ({
   email,
   location,
   properties,
+  reviews,
   img,
 }: ProfileProps) => {
 
@@ -179,6 +180,36 @@ const Profile = ({
                 location={property.location}
                 price={property.price}
                 photo={property.photo}
+              />
+            ))}
+          </Box>
+        </Box>
+      )}
+
+      {reviews.length > 0 && (
+        <Box mt={2.5} borderRadius="15px" >
+          <Typography fontSize={18} fontWeight={600}>
+            {type} Reviews
+          </Typography>
+
+          <Box
+            mt={1.5}
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2.5,
+            }}
+          >
+            {/* @ts-ignore */}
+            {reviews?.map((review) => (
+              // @ts-ignore
+              <ReviewCard
+              key={review._id}
+              id={review._id}
+              property={review.property}
+              rating={review.rating}
+              description={review.description}
+              showRatingNumber={true}
               />
             ))}
           </Box>
