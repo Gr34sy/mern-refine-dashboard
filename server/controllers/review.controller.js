@@ -19,7 +19,19 @@ const getAllReviews = async (req, res) => {
   }
 };
 
-const getReviewById = async (req, res) => {};
+const getReviewById = async (req, res) => {
+  try{
+    const { id } = req.params;
+    const review = await Review.findOne({_id: id}).populate('creator').populate('property');
+ 
+    if(review){ res.status(200).json(review)}else{
+       res.status(404).json({message: 'Review not found'});
+    };
+   }catch(e){
+    console.log(e.message);
+    res.status(500).json({message: 'Server error'});
+   }
+};
 
 const createReview = async (req, res) => {
   try {
