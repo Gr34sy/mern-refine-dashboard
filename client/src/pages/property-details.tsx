@@ -2,6 +2,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import { useDelete, useGetIdentity, useShow, useOne } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
+import ReviewCard from "../components/common/ReviewCard";
 import {
   AccountCircle,
   AlternateEmail,
@@ -65,262 +66,290 @@ const propertyDetails = () => {
   };
 
   return (
-    <Box
-      borderRadius="15px"
-      padding="20px"
-      bgcolor="primary.main"
-      width="fit-content"
-    >
-      <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
-        Details
-      </Typography>
-
+    <Box>
       <Box
-        mt="20px"
-        display="flex"
-        flexDirection={{ xs: "column", lg: "row" }}
-        gap={4}
+        borderRadius="15px"
+        padding="20px"
+        bgcolor="primary.main"
+        width="fit-content"
       >
-        <Box flex={1} maxWidth={764}>
-          <img
-            src={propertyDetails.photo}
-            alt={propertyDetails.title}
-            height={546}
-            style={{ objectFit: "cover", borderRadius: "10px" }}
-            className="property_details-img"
-          />
+        <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
+          Details
+        </Typography>
 
-          <Box mt="15px">
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              alignItems="center"
-            >
-              <Typography
-                fontSize={16}
-                fontWeight={500}
-                color="primary.contrastText"
-                textTransform="capitalize"
+        <Box
+          mt="20px"
+          display="flex"
+          flexDirection={{ xs: "column", lg: "row" }}
+          gap={4}
+        >
+          <Box flex={1} maxWidth={764}>
+            <img
+              src={propertyDetails.photo}
+              alt={propertyDetails.title}
+              height={546}
+              style={{ objectFit: "cover", borderRadius: "10px" }}
+              className="property_details-img"
+            />
+
+            <Box mt="15px">
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                flexWrap="wrap"
+                alignItems="center"
               >
-                {propertyDetails.propertyType}
-              </Typography>
-              <Box>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={`star-${star}`} sx={{ color: "#f2c94c" }} />
-                ))}
-              </Box>
-            </Stack>
-
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              alignItems="center"
-            >
-              <Box>
                 <Typography
-                  fontSize={26}
+                  fontSize={16}
                   fontWeight={500}
                   color="primary.contrastText"
                   textTransform="capitalize"
                 >
-                  {propertyDetails.title}
+                  {propertyDetails.propertyType}
                 </Typography>
+                <Box>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={`star-${star}`} sx={{ color: "#f2c94c" }} />
+                  ))}
+                </Box>
+              </Stack>
 
-                <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  <Place sx={{ color: "primary.contrastText" }} />
-                  <Typography color="secondary.contrastText" fontSize={16}>
-                    {propertyDetails.location}
-                  </Typography>
-                </Stack>
-              </Box>
-
-              <Box>
-                <Typography
-                  fontSize={16}
-                  fontWeight={600}
-                  mt="10px"
-                  color="primary.contrastText"
-                >
-                  Price
-                </Typography>
-                <Stack direction="row" alignItems="flex-end" gap={1}>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                flexWrap="wrap"
+                alignItems="center"
+              >
+                <Box>
                   <Typography
-                    fontSize={25}
-                    fontWeight={700}
-                    color="secondary.main"
+                    fontSize={26}
+                    fontWeight={500}
+                    color="primary.contrastText"
+                    textTransform="capitalize"
                   >
-                    ${propertyDetails.price}
+                    {propertyDetails.title}
                   </Typography>
-                  <Typography fontSize={14} color="#808191" mb={0.5}>
-                    / day
-                  </Typography>
-                </Stack>
-              </Box>
-            </Stack>
 
-            <Stack mt="25px" direction="column" gap="10px">
-              <Typography fontSize={16} color="primary.contrastText">
-                Description
-              </Typography>
-              <Typography fontSize={14} color="secondary.contrastText">
-                {propertyDetails.description}
-              </Typography>
-            </Stack>
+                  <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
+                    <Place sx={{ color: "primary.contrastText" }} />
+                    <Typography color="secondary.contrastText" fontSize={16}>
+                      {propertyDetails.location}
+                    </Typography>
+                  </Stack>
+                </Box>
+
+                <Box>
+                  <Typography
+                    fontSize={16}
+                    fontWeight={600}
+                    mt="10px"
+                    color="primary.contrastText"
+                  >
+                    Price
+                  </Typography>
+                  <Stack direction="row" alignItems="flex-end" gap={1}>
+                    <Typography
+                      fontSize={25}
+                      fontWeight={700}
+                      color="secondary.main"
+                    >
+                      ${propertyDetails.price}
+                    </Typography>
+                    <Typography fontSize={14} color="#808191" mb={0.5}>
+                      / day
+                    </Typography>
+                  </Stack>
+                </Box>
+              </Stack>
+
+              <Stack mt="25px" direction="column" gap="10px">
+                <Typography fontSize={16} color="primary.contrastText">
+                  Description
+                </Typography>
+                <Typography fontSize={14} color="secondary.contrastText">
+                  {propertyDetails.description}
+                </Typography>
+              </Stack>
+            </Box>
           </Box>
-        </Box>
 
-        <Box
-          width="100%"
-          flex={1}
-          maxWidth={326}
-          display="flex"
-          flexDirection="column"
-          gap="20px"
-        >
-          <Stack
+          <Box
             width="100%"
-            p={2}
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              borderWidth: "1px",
-              borderStyle: "solid",
-              borderColor: "secondary.contrastText",
-            }}
-            borderRadius={2}
+            flex={1}
+            maxWidth={326}
+            display="flex"
+            flexDirection="column"
+            gap="20px"
           >
             <Stack
-              mt={2}
+              width="100%"
+              p={2}
+              direction="column"
               justifyContent="center"
               alignItems="center"
-              textAlign="center"
+              sx={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "secondary.contrastText",
+              }}
+              borderRadius={2}
             >
-              <img
-                src={
-                  checkImage(propertyDetails.creator.avatar)
-                    ? propertyDetails.creator.avatar
-                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
-                }
-                alt="avatar"
-                width={90}
-                height={90}
-                style={{
-                  borderRadius: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              <Stack
+                mt={2}
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
+              >
+                <img
+                  src={
+                    checkImage(propertyDetails.creator.avatar)
+                      ? propertyDetails.creator.avatar
+                      : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
+                  }
+                  alt="avatar"
+                  width={90}
+                  height={90}
+                  style={{
+                    borderRadius: "100%",
+                    objectFit: "cover",
+                  }}
+                />
 
-              <Box mt="15px">
+                <Box mt="15px">
+                  <Typography
+                    fontSize={18}
+                    fontWeight={600}
+                    color="primary.contrastText"
+                  >
+                    {propertyDetails.creator.name}
+                  </Typography>
+                  <Typography
+                    mt="5px"
+                    fontSize={14}
+                    fontWeight={300}
+                    color="primary.contrastText"
+                  >
+                    Agent
+                  </Typography>
+                </Box>
+
+                <Stack mt="15px" direction="row" alignItems="center" gap={1}>
+                  <AlternateEmail sx={{ color: "secondary.contrastText" }} />
+                  <Typography
+                    fontSize={14}
+                    fontWeight={400}
+                    color="secondary.contrastText"
+                  >
+                    {propertyDetails.creator.email}
+                  </Typography>
+                </Stack>
+
                 <Typography
-                  fontSize={18}
+                  mt={1}
+                  fontSize={16}
                   fontWeight={600}
                   color="primary.contrastText"
                 >
-                  {propertyDetails.creator.name}
-                </Typography>
-                <Typography
-                  mt="5px"
-                  fontSize={14}
-                  fontWeight={300}
-                  color="primary.contrastText"
-                >
-                  Agent
-                </Typography>
-              </Box>
-
-              <Stack mt="15px" direction="row" alignItems="center" gap={1}>
-                <AlternateEmail sx={{ color: "secondary.contrastText" }} />
-                <Typography
-                  fontSize={14}
-                  fontWeight={400}
-                  color="secondary.contrastText"
-                >
-                  {propertyDetails.creator.email}
+                  {propertyDetails.creator.allProperties.length} Properties
                 </Typography>
               </Stack>
 
-              <Typography
-                mt={1}
-                fontSize={16}
-                fontWeight={600}
-                color="primary.contrastText"
+              <Stack
+                width="100%"
+                mt="25px"
+                direction="row"
+                flexWrap="wrap"
+                gap={2}
               >
-                {propertyDetails.creator.allProperties.length} Properties
-              </Typography>
+                <CustomButton
+                  title={!isCurrentUser ? "Message" : "Edit"}
+                  backgroundColor="secondary.main"
+                  color="#FCFCFC"
+                  fullWidth
+                  icon={!isCurrentUser ? <Email /> : <Edit />}
+                  handleClick={() => {
+                    if (isCurrentUser) {
+                      navigate(`/properties/edit/${propertyDetails._id}`);
+                    } else {
+                      window.location.href = `mailto:${propertyDetails.creator.mail}?subject=Subject&body=message%20goes%20here`;
+                    }
+                  }}
+                />
+                <CustomButton
+                  title={!isCurrentUser ? "Profile" : "Delete"}
+                  backgroundColor={
+                    !isCurrentUser ? "secondary.main" : "#d42e2e"
+                  }
+                  color="#FCFCFC"
+                  fullWidth
+                  icon={!isCurrentUser ? <AccountCircle /> : <Delete />}
+                  handleClick={() => {
+                    if (isCurrentUser) {
+                      handleDeleteProperty();
+                    } else {
+                      navigate(`/agents/show/${propertyDetails.creator._id}`);
+                    }
+                  }}
+                />
+              </Stack>
             </Stack>
 
-            <Stack
-              width="100%"
-              mt="25px"
-              direction="row"
-              flexWrap="wrap"
-              gap={2}
-            >
-              <CustomButton
-                title={!isCurrentUser ? "Message" : "Edit"}
-                backgroundColor="secondary.main"
-                color="#FCFCFC"
-                fullWidth
-                icon={!isCurrentUser ? <Email /> : <Edit />}
-                handleClick={() => {
-                  if (isCurrentUser) {
-                    navigate(`/properties/edit/${propertyDetails._id}`);
-                  } else {
-                    window.location.href = `mailto:${propertyDetails.creator.mail}?subject=Subject&body=message%20goes%20here`;
-                  }
+            <Box>
+              <iframe
+                style={{
+                  border: "none",
+                  borderRadius: "5px",
                 }}
-              />
-              <CustomButton
-                title={!isCurrentUser ? "Profile" : "Delete"}
-                backgroundColor={!isCurrentUser ? "secondary.main" : "#d42e2e"}
-                color="#FCFCFC"
-                fullWidth
-                icon={!isCurrentUser ? <AccountCircle /> : <Delete />}
-                handleClick={() => {
-                  if (isCurrentUser) {
-                    handleDeleteProperty();
-                  } else {
-                    navigate(`/agents/show/${propertyDetails.creator._id}`);
-                  }
-                }}
-              />
-            </Stack>
-          </Stack>
+                width="100%"
+                height="370"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://maps.google.com/maps?&q="+${propertyDetails.location}"&output=embed`}
+              ></iframe>
+            </Box>
 
-          <Box>
-            <iframe
-              style={{
-                border: "none",
-                borderRadius: "5px",
-              }}
-              width="100%"
-              height="370"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://maps.google.com/maps?&q="+${propertyDetails.location}"&output=embed`}
-            ></iframe>
-          </Box>
-
-          <Box>
-            {!isCurrentUser && (
-              <CustomButton
-                title={wasAlreadyReviewed ? "Edit Review" : "Review"}
-                backgroundColor={"#2ED480"}
-                color="#FCFCFC"
-                fullWidth
-                icon={<Stars />}
-                handleClick={() => {
-                  if (!isCurrentUser) {
-                    navigate(`/reviews/create/${propertyDetails._id}`);
-                  }
-                }}
-              />
-            )}
+            <Box>
+              {!isCurrentUser && (
+                <CustomButton
+                  title={wasAlreadyReviewed ? "Edit Review" : "Review"}
+                  backgroundColor={"#2ED480"}
+                  color="#FCFCFC"
+                  fullWidth
+                  icon={<Stars />}
+                  handleClick={() => {
+                    if (!isCurrentUser) {
+                      navigate(`/reviews/create/${propertyDetails._id}`);
+                    }
+                  }}
+                />
+              )}
+            </Box>
           </Box>
         </Box>
+      </Box>
+
+      <Box mt="30px">
+        <Typography fontSize={25} fontWeight={700} color="primary.contrastText">
+          {propertyDetails.allReviews.length > 0
+            ? "Reviews"
+            : "No Reviews"}
+        </Typography>
+
+        <Stack mt="20px" display="flex" flexDirection="row" gap={3}>
+          {/* @ts-ignore */}
+          {propertyDetails.allReviews.map((review) => (
+            // @ts-ignore
+            <ReviewCard
+              key={review._id}
+              id={review._id}
+              creator={review.creator}
+              property={review.property}
+              rating={review.rating}
+              description={review.description}
+              showRatingNumber={true}
+            />
+          ))}
+        </Stack>
       </Box>
     </Box>
   );

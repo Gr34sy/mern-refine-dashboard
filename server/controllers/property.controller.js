@@ -65,7 +65,7 @@ const getPropertyDetail = async (req, res) => {
   const { id } = req.params;
   const propertyExists = await Property.findOne({ _id: id }).populate(
     "creator"
-  ).populate("allReviews");
+  ).populate({path: "allReviews", populate: {path: 'creator'}});
 
   if (propertyExists) {
     res.status(200).json(propertyExists);

@@ -14,7 +14,7 @@ const reviews = () => {
   if (isError) return <Typography>Error</Typography>;
 
   return (
-    <Box>
+    <Box mt="20px">
       <Typography   fontSize={25}
             fontWeight={700}
             color="primary.contrastText">{!allReviews.length
@@ -30,6 +30,7 @@ const reviews = () => {
               id={review._id}
               creator={review.creator}
               property={review.property}
+              rating={review.rating}
             />
           ))}
         </Box>

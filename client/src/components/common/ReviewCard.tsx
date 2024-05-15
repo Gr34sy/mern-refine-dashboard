@@ -10,6 +10,7 @@ const ReviewCard = ({
   creator,
   rating,
   description,
+  showRatingNumber
 }: ReviewCardProps) => {
   const starsArray = [];
   for (let i = 0; i < rating; i++) {
@@ -23,7 +24,6 @@ const ReviewCard = ({
       sx={{
         gap: 3,
         bgcolor: "primary.main",
-        maxWidth: "400px",
         padding: "15px",
         "&:hover": {
           boxShadow: "0 0 10px 2px",
@@ -68,16 +68,16 @@ const ReviewCard = ({
             </Stack>
           )}
 
-          <Box>
-            <Stack direction="row" gap={1} alignItems="center">
-              <Typography>{rating}/5</Typography>
+          {showRatingNumber && (
+            <Typography fontSize={18} fontWeight={500}>
+              {rating}/5
+            </Typography>
+          )}
 
-              <Box>
-                {starsArray.map((star) => (
-                  <Star key={`star-${star}`} sx={{ color: "#f2c94c" }} />
-                ))}
-              </Box>
-            </Stack>
+          <Box display="flex">
+            {starsArray.map((star) => (
+              <Star key={`star-${star}`} sx={{ color: "#f2c94c" }} />
+            ))}
           </Box>
         </Stack>
 
@@ -102,7 +102,7 @@ const ReviewCard = ({
               fontWeight={600}
             >
               <Typography fontSize={14} fontWeight={500}>
-                 {/* @ts-ignore */}
+                {/* @ts-ignore */}
                 {creator.name}
               </Typography>
 

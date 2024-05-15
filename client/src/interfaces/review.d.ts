@@ -3,5 +3,6 @@ export interface ReviewCardProps {
     property: Object | undefined,
     creator: Object,
     rating: number,
+    showRatingNumber: boolean,
     description: string | undefined,
 }
