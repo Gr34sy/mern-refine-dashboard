@@ -1,10 +1,9 @@
-# Fullstack Dashboard
-## The app faciliates the organisation of everyday life or long-term plans to its users. It provides ability to manage time better with tasklists and simple lists.
+# Fullstack CRUD Dashboard
+## The app simulates the property management and marketplace system.
 
+### It was created with the use of Refine and the MERN stack in order to get to know these technologies better. Application enables logged users to manage their properties, reviews and edit their accounts.
 
-### The app was created in order to learn NextJS functionalities in a practical way. User can log in with google or github account. Then he is able to view, create, edit and delete simple todo lists or more complex tasklists. User can also change color theme according to his preferences.
-
-#### Technologies used in the app:
+#### Stack:
 <img align="left" alt="MongoDB" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" style="padding-right:10px;" />
 <img  align="left" alt="Express" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" style="padding-right:10px;"/>
 <img align="left" alt="React" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="padding-right:10px;" />
@@ -14,45 +13,37 @@
 
 <br/> <br/> <br/> 
 
-#### Next Features used in the app:
-<p>-> OAuth</p>
-<p>-> ServerSide Generation</p>
-<p>-> Api Routes</p>
-<p>-> Next Image Component</p>
-<p>-> File Based Routing</p>
+#### Main app functionalities:
+<p>-> Logging in and out</p>
+<p>-> Switching between light and dark modes</p>
+<p>-> Creating, Reading, Updating and Deleting  </p>
 
 <br/> <br/> <br/> 
 
 #### App User Guide:
-<p>1. Creating List:</p>
-<p>-> Go to ListCreator</p>
-<p>-> Enter needed information and click save, app will reload and redirect you to the homepage</p>
+<p>1. Dashboard:</p>
+<p>->On this page, user can view the stats related to user revenue, customers, properties etc. They are the dummy data.</p>
+<p>->Here, besides the mentioned dummy data, user can see top agents and 8 latest properties</p>
 <br/>
-<p>2. List view and editing:</p>
-<p>-> On homepage click on the list which you want to open</p>
-<p>-> You will be redirected to specific list page</p>
-<p>-> From there you can edit the title and tasks (also deadline and description if you are editing tasklist)</p>
-<p> -> To discard changes, click "Discard" button then the page will be reloaded and the changes will be cancelled</p>
-<p>-> To save, click "Save" button, then the page also will be reloaded, but the changes will be saved to the database</p>
+<p>2. Agents</p>
+<p>-> Page where all of the registered users (property agents) are listed</p>
+<p>-> After clicking the agent tile, user is redirected to profile details</p>
 <br/>
-<p>3. List deleting:</p>
-<p> -> Go to homepage</p>
-<p> -> Click the red, trash icon of the list you want to delete</p>
-<p> -> Then the popup will be displayed</p>
-<p> -> If you are sure to delete the item, click "Yes" button on the popup window</p>
+<p>3. Reviews</p>
+<p>-> List of the all reviews on the marketplace</p>
+<p>-> After clicking the review tile, user is redirected to the review details</p>
 <br/>
-<p>4. Adding Task to Tasklist</p>
-<p> -> On specific tasklist page, click on the "Add Task" accordion component</p>
-<p> -> Fill in the inputs, add operations and click Cancel/Add, then the page will be reloaded</p>
+<p>4. My profile and user profile pages</p>
+<p>-> They contain the details of the specific user, such as address or phone number.</p>
+<p>-> And also all of user's reviews and properties if he has any</p>
 <br/>
-<p> 5. Theme Changes:</p>
-<p> -> Go to options page</p>
-<p> -> Choose the theme options tab</p>
-<p> -> Select preferred color motive</p>
-<p> -> Discard changes or save it to the database</p>
+<p>5. Review Details</p>
+<p>-> The page displays a description, number of stars, property name, agent who has written this review, etc.</p>
+<p>-> If a logged user is the creator of this specific review, the "Edit" button is also displayed on the screen</p>
 <br/>
-<p>6. Logging Out:</p>
-<p> -> Go to options page</p>
-<p> -> Choose the log out tab</p>
-<p> -> Confirm log out</p>
+<p>6. Property Details</p>
+<p>-> Page displays the property information, the number of stars which is an average from its all reviews, and the embeded google map with its localisation. </p>
+<p>-> If a logged user is the creator of this property, the "Edit" and "Delete" buttons are displayed on the screen</p>
+<p>-> If a not logged user is the creator of this property, the "Message" and "Profile" buttons are displayed on the screen instead</p>
+<br/>
 <br/><br/><br/>
