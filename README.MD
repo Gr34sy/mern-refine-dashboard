@@ -9,6 +9,7 @@
 <img  align="left" alt="Express" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" style="padding-right:10px;"/>
 <img align="left" alt="React" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="padding-right:10px;" />
 <img align="left" alt="Node" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" style="padding-right:10px;" />
+<img align="left" alt="Material UI" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-plain.svg" style="padding-right:10px;" />
 
 <br/> <br/> <br/> 
 
@@ -54,4 +55,3 @@
 <p> -> Choose the log out tab</p>
 <p> -> Confirm log out</p>
 <br/><br/><br/>
-PS: I'know that the code is not as clean as it should be. </p>
