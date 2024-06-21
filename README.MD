@@ -1,4 +1,4 @@
-# ToDo App created with NextJS and MongoDB
+# Fullstack Dashboard
 ## The app faciliates the organisation of everyday life or long-term plans to its users. It provides ability to manage time better with tasklists and simple lists.
 
 
@@ -10,6 +10,7 @@
 <img align="left" alt="React" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="padding-right:10px;" />
 <img align="left" alt="Node" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" style="padding-right:10px;" />
 <img align="left" alt="Material UI" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-plain.svg" style="padding-right:10px;" />
+<img align="left" alt="Refine" width="50px" src="https://seeklogo.com/images/R/refine-logo-C455E15711-seeklogo.com.png" style="padding-right:10px;" />
 
 <br/> <br/> <br/> 
 
