@@ -14,9 +14,10 @@
 <br/> <br/> <br/> 
 
 #### Main app functionalities:
-<p>-> Logging in and out</p>
+<p>-> Logging in and out with google authorization</p>
 <p>-> Switching between light and dark modes</p>
-<p>-> Creating, Reading, Updating and Deleting  </p>
+<p>-> Creating, Reading, Updating, Deleting the properties and the property reviews</p>
+<p>-> Editing and displaying agent profile</p>
 
 <br/> <br/> <br/> 
 
@@ -42,7 +43,7 @@
 <p>-> If a logged user is the creator of this specific review, the "Edit" button is also displayed on the screen</p>
 <br/>
 <p>6. Property Details</p>
-<p>-> Page displays the property information, the number of stars which is an average from its all reviews, and the embeded google map with its localisation. </p>
+<p>-> This page displays the property information, the number of stars which is an average from its all reviews, and the embeded google map with its localisation. </p>
 <p>-> If a logged user is the creator of this property, the "Edit" and "Delete" buttons are displayed on the screen</p>
 <p>-> If a not logged user is the creator of this property, the "Message" and "Profile" buttons are displayed on the screen instead</p>
 <br/>
